@@ -11,5 +11,5 @@ namespace Elo\Api;
 
 class EloClient
 {
-	const VERSION = '0.0.1';
+	const VERSION = '0.0.2';
 }
