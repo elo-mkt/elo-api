@@ -6,30 +6,16 @@ following lines to your projects `composer.json` file.
 ```json
 {
 	"require": {
-    		"catskillet/elo-api": "dev-master"
+    		"catskillet/elo-api": "0.0.x"
     	},
 	"repositories": [
 		{
-			"type": "package",
-			"package": {
-				"name": "catskillet/elo-api",
-				"version": "dev-master",
-				"source": {
-					"url": "git@git.catskillet.com:elo/elo-api.git",
-					"type": "git",
-					"reference": "{TAG-VERSION}"
-				},
-				"autoload": {
-					"psr-0": {
-						"Elo\\Api": "src"
-					}
-				}
-			}
+			"type": "vcs",
+			"url": "git@git.catskillet.com:elo/elo-api.git"
 		}
 	],
 }
 ```
 
-Note that the `{TAG-VERSION}` should be a valid tag name like `0.0.1` 
-or use `master` if you would like to use the latest version. 
+Note that the `{VERSION}` should be a valid version like `1.0.x` or `1.0.1`. 
 
