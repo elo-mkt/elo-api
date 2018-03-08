@@ -6,7 +6,7 @@ following lines to your projects `composer.json` file.
 ```json
 {
 	"require": {
-    		"catskillet/elo-api": "0.0.x"
+    		"catskillet/elo-api": "{VERSION}"
     	},
 	"repositories": [
 		{
@@ -17,5 +17,7 @@ following lines to your projects `composer.json` file.
 }
 ```
 
-Note that the `{VERSION}` should be a valid version like `1.0.x` or `1.0.1`. 
+Note that the `{VERSION}` should be a valid version like `1.0.x`, `1.0.1`.
+To get the current developed version use `dev-master` or `master`, both 
+are pointing to the same branch.
 
