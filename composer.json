@@ -1,12 +1,6 @@
 {
   "name": "catskillet/elo-api",
   "type": "package",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@git.catskillet.com:elo/elo-api.git"
-    }
-  ],
   "autoload": {
     "psr-0": {
       "Elo\\Api": "src"
