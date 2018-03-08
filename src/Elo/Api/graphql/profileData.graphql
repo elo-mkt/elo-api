@@ -1,0 +1,37 @@
+{
+	"query":"query {  
+		user(id:\"a\") 
+		{   
+			name, 
+			firstName,  
+			lastName, 
+			displayName, 
+			username, 
+			birthday, 
+			contacts 
+			{
+				type, 
+				context, 
+				value
+			}, 
+			addresses {
+				context, 
+				country, 
+				state, 
+				city, 
+				zip, 
+				number, 
+				place, 
+				complement
+			}, 
+			legalIds{
+				cpf {number}, 
+				rg { number, issuerOrganization, issuerState, issueDate}
+			}, 
+			publicKeys {id, key}, 
+			cardHolders {id, companyName, companyLegalName}  
+		}
+	}",
+	
+	"variables":null
+}

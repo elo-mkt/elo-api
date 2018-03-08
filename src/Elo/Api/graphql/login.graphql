@@ -1,0 +1,10 @@
+{
+	"query": "mutation{ 
+		login( input:{ clientMutationId:\"102\", username: \"$username\", challenge: \"$challenge\"  })  
+		{ 
+			clientMutationId, 
+			accessToken 
+		}
+	}",
+	"variables":""
+}
