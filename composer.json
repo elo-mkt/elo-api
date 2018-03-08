@@ -1,6 +1,6 @@
 {
   "name": "catskillet/elo-api",
-  "type": "package",
+  "type": "vcs",
   "autoload": {
     "psr-0": {
       "Elo\\Api": "src"
