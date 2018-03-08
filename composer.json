@@ -1,17 +1,22 @@
 {
-  "name": "catskillet/elo-api",
-  "type": "vcs",
-  "autoload": {
-    "psr-0": {
-      "Elo\\Api": "src"
-    }
-  },
-  "authors": [
-    {
-      "name": "Solano Morales",
-      "email": "solano@catskillet.com"
-    }
-  ],
-  "minimum-stability": "dev",
-  "require": {}
+	"name": "catskillet/elo-api",
+	"type": "vcs",
+	"autoload": {
+		"psr-0": {
+			"Elo\\Api": "src"
+		}
+	},
+	"authors": [
+		{
+			"name": "Solano Morales",
+			"email": "solano@catskillet.com"
+		}
+	],
+	"minimum-stability": "dev",
+	"require": {}
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.0.x-dev"
+		}
+	}
 }
