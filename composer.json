@@ -1,0 +1,12 @@
+{
+    "name": "catskillet/elo-api",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Solano Morales",
+            "email": "solano@catskillet.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
