@@ -1,0 +1,31 @@
+{
+	"query":"mutation {
+		addPublicKeyToUser(
+			input:{
+				clientMutationId:\"\", 
+				userId:\"$access_token\", 
+				key:\"{
+					\\\"kty\\\":\\\"EC\\\",
+					\\\"kid\\\":\\\"$key_id\\\",
+					\\\"x\\\":\\\"$key_x\\\",
+					\\\"y\\\":\\\"$key_y\\\",
+					\\\"crv\\\":\\\"P-256\\\"
+				}\",
+				format:JWK
+			}
+		)
+		{
+			clientMutationId, 
+			user{
+				id,
+				firstName,
+				lastName
+			}, 
+			publicKey{
+				id,
+				key
+			}
+		}
+	}",
+	"variables":null
+}

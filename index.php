@@ -7,8 +7,7 @@
  */
 
 require_once 'test/Tester.php';
-//require_once 'src/EloClient.php';
-//require_once 'src/SchemeHandler.php';
+require_once 'test/VOFactory.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 spl_autoload_register(function ($class_name) {
@@ -17,4 +16,5 @@ spl_autoload_register(function ($class_name) {
 
 $tester = new Tester();
 
-echo $tester->loadLoginScheme();
+//echo phpinfo();
+echo $tester->test();

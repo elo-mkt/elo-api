@@ -1,5 +1,9 @@
 # Elo Api Library
 
+## Server dependencies
+`sudo apt-get install php7.x-gmp`
+
+## Usage
 To include this library in other projects, you have to add 
 following lines to your projects `composer.json` file.
 

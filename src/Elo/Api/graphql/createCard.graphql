@@ -1,0 +1,37 @@
+{
+  "query": "mutation { 
+  	createCard(
+  		input:{ 
+  			clientMutationId:\"012\", 
+  			sensitive:\"$encryptedCard\", 
+  			holderId:\"$holderId\", 
+  			billingAddress:{
+  				context:\"$addressContext\" 
+  				country:\"$country\", 
+  				city:\"$city\", 
+  				state:\"$state\", 
+  				zip:\"$zip\", 
+  				place:\"$place\"  
+  			}, 
+  			usageConstraints:{ 
+  				maxUsage:10, 
+  				expiry:\"2018-01-01T01:01:01Z\" 
+  				allowedTxAmounts:{ 
+  					currency:\"BRL\", 
+  					min:1,
+  					max:5
+  				}, 
+  				allowedMerchants:\"1\" allowedMerchantCategories:{ min:1,max:5 }, 
+  				deniedMerchantCategories:{ min:1, max:5 }
+  			}
+  		}
+  	)
+  	{
+  		card {
+  			id, 
+  			sensitive
+  		}
+  	}
+  }",
+  "variables": null
+}

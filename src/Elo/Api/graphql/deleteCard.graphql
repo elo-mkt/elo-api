@@ -1,0 +1,30 @@
+{
+	"query":"mutation{ 
+		deleteCard( 
+			input:{ 
+				clientMutationId: \"123456\", 
+				cardId:\"$cardId\"
+			} 
+		) 
+		{ 
+			clientMutationId, 
+			cardId, 
+			last4, 
+			expiry{ 
+				month, 
+				year 
+			}, 
+			holder{ 
+				id, 
+				name, 
+				firstName, 
+				lastName 
+			}, 
+			bin{ 
+				number, 
+				isInternational 
+			}
+		}
+	}",
+	"variables":null
+}

@@ -1,0 +1,55 @@
+{
+	"query":"mutation{  
+		updateUser(
+			input:  {  
+				clientMutationId:\"051\", 
+				id: \"$id\", 
+				name:\"$name\", 
+				username: \"$username\", 
+				firstName: \"$firstname\",  
+				lastName: \"$lastname\",  
+				displayName: \"$displayname\", 
+				birthday: \"$birthday\", 
+				legalIds:{ 
+					cpf: \"$cpf\", 
+					rg:{ 
+						number: \"$rgNumber\", 
+						issuerOrganization: \"$issuerOrganization\", 
+						issuerState: \"$issuerState\", 
+						issueDate: \"$issueDate\" }  
+					},  
+					contacts:[
+						{ 
+							type:EMAIL, 
+							context: \"$emailContext\", 
+							value: \"$email\"  
+						},
+						{ 
+							type:PHONE, 
+							context: \"$phoneContext\", 
+							value: \"$phone\"  
+						}
+					],  
+					addresses: { 
+						context: \"$addressContext\", 
+						country: \"BRL\", 
+						city: \"$city\", 
+						state: \"$state\", 
+						stateAbbrev:\"$statecode\", 
+						zip: \"$zip\", 
+						number: $number, 
+						place: \"$place\", 
+						complement: \"$complement\"
+					}
+			}
+		) 
+		{ 
+			clientMutationId, 
+			user{ 
+				username, 
+				name 
+			} 
+		} 
+	}",
+	"variables":""
+}

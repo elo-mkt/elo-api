@@ -1,0 +1,29 @@
+{
+	"query":" mutation{ 
+		createCardHolderForUser
+		(
+			input: { clientMutationId: \"1234567890\", userId: \"$access_token\"}
+		) 
+		{ 
+			user{ 
+				id, 
+				username, 
+				firstName, 
+				lastName, 
+				displayName 
+			}, 
+			
+			cardHolder{ 
+				id, 
+				name, 
+				firstName, 
+				lastName, 
+				displayName, 
+				legalIds {
+					cpf{ number }
+				}
+			}
+		}
+	}",
+	"variables":""
+}

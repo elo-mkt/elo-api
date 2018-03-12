@@ -6,8 +6,10 @@
  * Time: 18:05
  */
 
-namespace Elo\Api;
+namespace Elo\Api\Http;
 
+
+use Elo\Api\EloClient;
 
 class EloHeader
 {
@@ -22,11 +24,13 @@ class EloHeader
 	
 	public static function privateHeader()
 	{
-		return [
+		$accessToken = EloSessionHandler::get('accessToken');
+		$headers = [
 			'Content-Type'  => 'application/json',
 			'client_id'     => EloClient::$CLIENT_ID,
 			'Authorization' => 'Basic ' . EloClient::$BASIC_AUTHORIZATION,
-			'access_token'  => SessionHandler::get('accessToken'),
 		];
+		if($accessToken) $headers['access_token']  = $accessToken;
+		return $headers;
 	}
 }

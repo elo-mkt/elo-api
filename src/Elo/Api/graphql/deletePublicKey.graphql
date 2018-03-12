@@ -1,0 +1,25 @@
+{
+	"query": "mutation{ 
+		removePublicKeyFromUser( 
+			input:{ 
+				clientMutationId:\"123456\", 
+				userId:\"$access_token\", 
+				keyId:\"$key_id\" } 
+		) 
+		{ 
+			clientMutationId, 
+			user{ 
+				id, 
+				username, 
+				name, 
+				firstName 
+			}, 
+			publicKey{ 
+				id, 
+				key, 
+				fingerprint 
+			}  
+		}
+	}",
+	"variables":null
+}

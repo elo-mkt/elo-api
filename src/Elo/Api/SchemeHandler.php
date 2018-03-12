@@ -20,11 +20,13 @@ class SchemeHandler
 		
 		foreach($data as $key => $value)
 		{
-			$keys[] = $key;
+			$keys[] = '$'.$key;
 			$values[] = $value;
 		}
 		
 		$graphQL = str_replace($keys, $values, $graphQL);
+		
+//		echo $graphQL; exit;
 		
 		return $graphQL;
 	}

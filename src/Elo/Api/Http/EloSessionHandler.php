@@ -6,27 +6,34 @@
  * Time: 18:37
  */
 
-namespace Elo\Api;
+namespace Elo\Api\Http;
 
 
-class SessionHandler
+class EloSessionHandler
 {
+	private static function init()
+	{
+		$sessionName = '09a654cd41013c92ab86';
+		@session_name( $sessionName );
+		@session_start();
+	}
+	
 	public static function set($values)
 	{
-		@session_start();
+		self::init();
 		foreach ($values as $key=>$value)
 			$_SESSION["elo-api::".$key] = $value;
 	}
 	
 	public static function get($key)
 	{
-		@session_start();
-		return $_SESSION["elo-api::".$key];
+		self::init();
+		return @$_SESSION["elo-api::".$key];
 	}
 	
 	public static function destroy()
 	{
-		@session_start();
+		self::init();
 		session_unset();
 		session_destroy();
 	}

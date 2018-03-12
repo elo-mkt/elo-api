@@ -14,6 +14,7 @@
 	],
 	"minimum-stability": "dev",
 	"require": {
-		"guzzlehttp/guzzle": "^6.2@dev"
+		"guzzlehttp/guzzle": "^6.2@dev",
+		"web-token/jwt-framework": "^1.1@dev"
 	}
 }

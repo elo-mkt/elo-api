@@ -8,8 +8,24 @@
 
 namespace Elo\Api;
 
-use Elo\Api\Crypt\EloCrypt;
-use GuzzleHttp\Client;
+use Elo\Api\Cmd\CreateCard;
+use Elo\Api\Cmd\DeleteCard;
+use Elo\Api\Cmd\DeletePublicKey;
+use Elo\Api\Cmd\GetChallenge;
+use Elo\Api\Cmd\GetEloPublicKey;
+use Elo\Api\Cmd\GetProfileData;
+use Elo\Api\Cmd\GetLoginSalt;
+use Elo\Api\Cmd\Login;
+use Elo\Api\Cmd\RequestPasswordRequestByEmail;
+use Elo\Api\Cmd\ResetPassword;
+use Elo\Api\Cmd\SignUp;
+use Elo\Api\Cmd\StorePublicKey;
+use Elo\Api\Cmd\UpdateCardBillingAddress;
+use Elo\Api\Cmd\UpdateProfile;
+use Elo\Api\Cmd\VO\CardBillingAddress;
+use Elo\Api\Cmd\VO\CardData;
+use Elo\Api\Cmd\VO\PasswordResetData;
+use Elo\Api\Http\EloResponse;
 
 class EloClient
 {
@@ -18,7 +34,6 @@ class EloClient
 	static $PUBLIC_URL          =null;
 	static $PRIVATE_URL         =null;
 	static $PUBLIC_KEY_URL      =null;
-	
 	
 	/**
 	 * @param $settings array Array with the following variables:  
@@ -40,85 +55,159 @@ class EloClient
 	}
 	
 	
-	public function __construct()
+	public function __construct($settings = null)
 	{
-		self::init([
-			"CLIENT_ID"           => "dcebc3db-22ef-388b-b4d6-f0637751c622",
-			"BASIC_AUTHORIZATION" => "ZGNlYmMzZGItMjJlZi0zODhiLWI0ZDYtZjA2Mzc3NTFjNjIyOmQzYzhlOWNlLTE3NjctM2EzZS05NjBjLTg2ZjkxY2I3NDBkZg==",
-			"PUBLIC_URL"          => "https://hml-api.elo.com.br/graphql",
-			"PRIVATE_URL"         => "https://hml-api.elo.com.br/graphql-private",
-			"PUBLIC_KEY_URL"      => "https://hml-api.elo.com.br/user/v1/publickeys",
-		]);
-		
-		$this->httpClient    = new Client();
+		if($settings) self::init($settings);
 	}
 	
-	
-	public function getProfileData()
+	/**
+	 * @param $username
+	 * @return EloResponse
+	 */
+	public function getLoginSalt($username)
 	{
-		$body = SchemeHandler::getScheme('profileData');
-		$res = $this->httpClient->request('POST', self::$PRIVATE_URL, [
-			'headers' => EloHeader::privateHeader(),
-			'body'    => $body
-		]);
-		
-		$result = json_decode($res->getBody());
-		$user = $result->data->user;
-		
-		return $user;
+		$cmd = new GetLoginSalt($username);
+		$cmd->execute();
+		return $cmd->response;
 	}
 	
+	/**
+	 * @param $username
+	 * @param $password
+	 * @return EloResponse
+	 */
+	public function getChallenge($username, $password)
+	{
+		$cmd = new GetChallenge($username, $password);
+		$cmd->execute();
+		return $cmd->response;
+	}
 	
+	/**
+	 * @param $signUpData
+	 * @return EloResponse
+	 */
+	public function signUp($signUpData)
+	{
+		$cmd = new SignUp($signUpData);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param $username
+	 * @param $password
+	 * @return EloResponse
+	 */
 	public function login($username, $password)
 	{
-		$this->checkVars();
-		
-		$eloCrypt = new EloCrypt();
-		$encryptedPassword = $eloCrypt->bcryptUserPassword($username, $password);
-		$apiSalt = $this->getSaltLogin($username);
-		$challenge = $eloCrypt->bcryptChallengePasswordSync($encryptedPassword, $apiSalt);
-		
-		$body = SchemeHandler::getScheme('login', ['$username' => $username, '$challenge'=>$challenge]);
-		
-		$res = EloHttp::publicCall($body);
-		
-		$result = json_decode($res->getBody());
-		
-		if(property_exists($result, 'errors') && $result->errors)
-			return $result->errors[0]->message;
-		
-		if(property_exists($result, 'data') && property_exists($result->data, 'login'))
-		{
-			SessionHandler::set([
-				'accessToken'      => $result->data->login->accessToken,
-				'clientMutationId' => $result->data->login->clientMutationId
-			]);
-		}
-		
-		$userProfile = $this->getProfileData();
-		if (property_exists($userProfile->legalIds, 'cpf')) {
-			SessionHandler::set(['cpf' => $userProfile->legalIds->cpf->number]);
-		}
-		
-		return 'logged in '.SessionHandler::get('accessToken');
+		$cmd = new Login($username, $password);
+		$cmd->execute();
+		return $cmd->response;
 	}
 	
-	private function getSaltLogin($username)
+	/**
+	 * @return EloResponse
+	 */
+	public function getProfile()
 	{
-		$username = str_replace(['"', "'"], '', $username);
-		$body = SchemeHandler::getScheme('createLoginSalt', ['$username' => $username]);
-		
-		$res = $this->httpClient->request('POST', self::$PUBLIC_URL, [
-			'headers' => EloHeader::publicHeader(),
-			'body'    => $body
-		]);
-		
-		return json_decode($res->getBody())->data->createLoginSalt->salt;
+		$cmd = new GetProfileData();
+		$cmd->execute();
+		return $cmd->response;
 	}
 	
-	private function checkVars()
+	/**
+	 * @param $keyId
+	 * @return EloResponse
+	 */
+	public function storePublicKey($keyId)
 	{
-		if( !self::$CLIENT_ID || !self::$BASIC_AUTHORIZATION || !self::$PUBLIC_URL || !self::$PRIVATE_URL || !self::$PUBLIC_KEY_URL)
-			throw new \Exception('Please initialize firstly Elo\\Api\\EloClient::init($settings).');
+		$cmd = new StorePublicKey($keyId);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param $keyId
+	 * @return EloResponse
+	 */
+	public function deletePublicKey($keyId)
+	{
+		$cmd = new DeletePublicKey($keyId);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @return EloResponse
+	 */
+	public function getEloPublicKey()
+	{
+		$cmd = new GetEloPublicKey();
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param $userProfile
+	 * @return EloResponse
+	 */
+	public function updateProfile($userProfile)
+	{
+		$cmd = new UpdateProfile($userProfile);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param string $cpf
+	 * @param string $email
+	 * @return EloResponse
+	 */
+	public function requestPasswordResetByEmail(string $cpf, string $email)
+	{
+		$cmd = new RequestPasswordRequestByEmail($cpf, $email);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param PasswordResetData $data
+	 * @return EloResponse
+	 */
+	public function resetPassword(PasswordResetData $data)
+	{
+		$cmd = new ResetPassword($data);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param CardData $cardData
+	 * @return EloResponse
+	 */
+	public function createCard(CardData $cardData)
+	{
+		$cmd = new CreateCard($cardData);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param string $cardId
+	 * @return EloResponse
+	 */
+	public function deleteCard(string $cardId)
+	{
+		$cmd = new DeleteCard($cardId);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	public function updateCardBillingAddress(CardBillingAddress $billingAddress)
+	{
+		$cmd = new UpdateCardBillingAddress($billingAddress);
+		$cmd->execute();
+		return $cmd->response;
 	}
 }
