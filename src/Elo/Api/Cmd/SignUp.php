@@ -34,10 +34,6 @@ class SignUp extends EloApiCMD
 		$data['password'] = $eloCrypt->bcryptUserPassword($this->userData->username, $this->userData->password);
 		$this->call( $data );
 		
-//		$data = new \ArrayObject($this->userData);
-//		$data['password'] = $eloCrypt->bcryptUserPassword($this->userData['username'], $data['password']);
-//		$this->call( (array) $data );
-		
 		if($this->failed())
 			return;
 		
@@ -48,31 +44,6 @@ class SignUp extends EloApiCMD
 		]);
 		
 		$this->createCardHolders();
-		
-//		$query = '{"query":"mutation{  createUser(input:  {  clientMutationId:\"051\", name:\"$name\", username: \"$username\", bcryptPassword: \"$password\", firstName: \"$firstname\",  lastName: \"$lastname\",  displayName: \"$displayname\", birthday: \"$birthday\", legalIds:{ cpf: \"$cpf\", rg:{ number: \"$rgNumber\", issuerOrganization: \"$issuerOrganization\", issuerState: \"$issuerState\", issueDate: \"$issueDate\" }  },  contacts:[{ type:EMAIL, context: \"$emailContext\", value: \"$email\"  },{ type:PHONE, context: \"$phoneContext\", value: \"$phone\"  }],  addresses:{ context: \"$addressContext\", country: \"BRL\", city: \"$city\", state: \"$state\", stateAbbrev:\"$statecode\", zip: \"$zip\", number: $number, place: \"$place\", complement: \"$complement\"}}) { id, name } }","variables":""}';
-//		$body = $this->getProfileBody($request, $query);
-////        echo $body;exit;
-//		
-//		$res = $this->httpClient->request('POST', $this->PUBLIC_URL, [
-//			'headers' => $this->getHeader(),
-//			'body'    => $body
-//		]);
-//		
-//		$result = json_decode($res->getBody());
-//		
-//		$errors = $this->getResultErrors($result);
-//		if($errors)
-//			return $errors;
-//		
-//		$request->session()->put('userId', $result->data->createUser->id);
-//		$request->session()->put('userName', $result->data->createUser->name);
-//		$this->doLogin($request->username, $request->password);
-//		
-//		$this->createCardHolder();
-//		$this->createPrivateAndPublicKey();
-		
-//		if($request->has('check-offers') && $request->input('check-offers') == 'on')
-//			$this->subscribeToNewsletter($result->data->createUser->id, $request->email);
 		
 		return null;
 	}

@@ -12,6 +12,7 @@ use Elo\Api\Cmd\CreateCard;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
 use Elo\Api\Cmd\GetChallenge;
+use Elo\Api\Cmd\GetCPF;
 use Elo\Api\Cmd\GetEloPublicKey;
 use Elo\Api\Cmd\GetProfileData;
 use Elo\Api\Cmd\GetLoginSalt;
@@ -117,6 +118,14 @@ class EloClient
 	}
 	
 	/**
+	 * @return bool
+	 */
+	public function isLogged()
+	{
+		return !is_null(EloSessionHandler::get('accessToken'));
+	}
+	
+	/**
 	 * @return EloResponse
 	 */
 	public function getProfile()
@@ -124,6 +133,17 @@ class EloClient
 		$cmd = new GetProfileData();
 		$cmd->execute();
 		return $cmd->response;
+	}
+	
+	/**
+	 * @return string
+	 * @throws \Exception
+	 */
+	public function getCPF()
+	{
+		$cmd = new GetCPF();
+		$cmd->execute();
+		return ($cmd->response->getData());
 	}
 	
 	/**

@@ -36,13 +36,9 @@ class Login extends EloApiCMD
 		]);
 		
 		if($this->failed())
-		{
-			var_dump($this->response);
 			return $this->response->firstErrorMessage();
-		}
 		
 		$responseData = $this->response->getData();
-		
 		
 		if($responseData && property_exists($responseData, 'login'))
 		{
@@ -52,7 +48,15 @@ class Login extends EloApiCMD
 			]);
 		}
 		
+		$this->loadDataIntoSession();
+		
 		$this->checkCardHolders();
+	}
+	
+	private function loadDataIntoSession()
+	{
+		$cmd = new GetCPF();
+		$cmd->execute();
 	}
 	
 	private function checkCardHolders()
