@@ -12,9 +12,12 @@
 			"email": "solano@catskillet.com"
 		}
 	],
-	"minimum-stability": "dev",
+	"minimum-stability": "stable",
 	"require": {
-		"guzzlehttp/guzzle": "^6.2@dev",
-		"web-token/jwt-framework": "^1.1@dev"
+		"web-token/jwt-framework": "^1.0",
+		"guzzlehttp/guzzle": "^6.3"
+	},
+	"config": {
+		"preferred-install": "dist"
 	}
 }
