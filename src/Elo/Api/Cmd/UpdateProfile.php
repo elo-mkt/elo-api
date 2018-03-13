@@ -9,11 +9,14 @@
 namespace Elo\Api\Cmd;
 
 
+use Elo\Api\Cmd\VO\UserData;
+
 class UpdateProfile extends EloApiCMD
 {
+	/** @var UserData  */
 	private $userData;
 	
-	public function __construct($userData)
+	public function __construct(UserData $userData)
 	{
 		parent::__construct();
 		$this->userData = $userData;
@@ -23,6 +26,6 @@ class UpdateProfile extends EloApiCMD
 	
 	public function execute()
 	{
-		$this->call($this->userData);
+		$this->call($this->userData->toArray());
 	}
 }

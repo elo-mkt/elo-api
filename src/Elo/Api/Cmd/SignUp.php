@@ -2,8 +2,8 @@
 
 namespace Elo\Api\Cmd;
 
+use Elo\Api\Cmd\VO\UserData;
 use Elo\Api\Crypt\EloCrypt;
-use Elo\Api\SchemeHandler;
 use Elo\Api\Http\EloSessionHandler;
 
 /**
@@ -15,12 +15,13 @@ use Elo\Api\Http\EloSessionHandler;
 
 class SignUp extends EloApiCMD
 {
-	private $signUpData;
+	/** @var UserData */
+	private $userData;
 	
-	public function __construct($signUpData)
+	public function __construct(UserData $userData)
 	{
 		parent::__construct();
-		$this->signUpData = $signUpData;
+		$this->userData = $userData;
 		$this->isPrivateCall = false;
 		$this->graphQLFile = "createUser";
 	}
@@ -28,10 +29,14 @@ class SignUp extends EloApiCMD
 	public function execute()
 	{
 		$eloCrypt = new EloCrypt();
-		$data = new \ArrayObject($this->signUpData);
-		$data['password'] = $eloCrypt->bcryptUserPassword($this->signUpData['username'], $data['password']);
 		
-		$this->call( (array) $data);
+		$data = $this->userData->toArray();
+		$data['password'] = $eloCrypt->bcryptUserPassword($this->userData->username, $this->userData->password);
+		$this->call( $data );
+		
+//		$data = new \ArrayObject($this->userData);
+//		$data['password'] = $eloCrypt->bcryptUserPassword($this->userData['username'], $data['password']);
+//		$this->call( (array) $data );
 		
 		if($this->failed())
 			return;

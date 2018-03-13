@@ -25,7 +25,9 @@ use Elo\Api\Cmd\UpdateProfile;
 use Elo\Api\Cmd\VO\CardBillingAddress;
 use Elo\Api\Cmd\VO\CardData;
 use Elo\Api\Cmd\VO\PasswordResetData;
+use Elo\Api\Cmd\VO\UserData;
 use Elo\Api\Http\EloResponse;
+use Elo\Api\Http\EloSessionHandler;
 
 class EloClient
 {
@@ -84,12 +86,12 @@ class EloClient
 	}
 	
 	/**
-	 * @param $signUpData
+	 * @param UserData $userData
 	 * @return EloResponse
 	 */
-	public function signUp($signUpData)
+	public function signUp(UserData $userData)
 	{
-		$cmd = new SignUp($signUpData);
+		$cmd = new SignUp($userData);
 		$cmd->execute();
 		return $cmd->response;
 	}
@@ -104,6 +106,14 @@ class EloClient
 		$cmd = new Login($username, $password);
 		$cmd->execute();
 		return $cmd->response;
+	}
+	
+	/**
+	 * 
+	 */
+	public function logout()
+	{
+		EloSessionHandler::destroy();
 	}
 	
 	/**
@@ -149,12 +159,12 @@ class EloClient
 	}
 	
 	/**
-	 * @param $userProfile
+	 * @param UserData $userData
 	 * @return EloResponse
 	 */
-	public function updateProfile($userProfile)
+	public function updateProfile(UserData $userData)
 	{
-		$cmd = new UpdateProfile($userProfile);
+		$cmd = new UpdateProfile($userData);
 		$cmd->execute();
 		return $cmd->response;
 	}
