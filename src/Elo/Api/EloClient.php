@@ -49,11 +49,11 @@ class EloClient
 	 */
 	public static function init($settings)
 	{
-		self::$CLIENT_ID            = $settings['CLIENT_ID'];
-		self::$BASIC_AUTHORIZATION  = $settings['BASIC_AUTHORIZATION'];
-		self::$PUBLIC_URL           = $settings['PUBLIC_URL'];
-		self::$PRIVATE_URL          = $settings['PRIVATE_URL'];
-		self::$PUBLIC_KEY_URL       = $settings['PUBLIC_KEY_URL'];
+		self::$CLIENT_ID            = $settings['ELO_CLIENT_ID'];
+		self::$BASIC_AUTHORIZATION  = $settings['ELO_BASIC_AUTHORIZATION'];
+		self::$PUBLIC_URL           = $settings['ELO_PUBLIC_URL'];
+		self::$PRIVATE_URL          = $settings['ELO_PRIVATE_URL'];
+		self::$PUBLIC_KEY_URL       = $settings['ELO_PUBLIC_KEY_URL'];
 	}
 	
 	
