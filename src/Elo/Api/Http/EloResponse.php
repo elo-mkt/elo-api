@@ -52,8 +52,13 @@ class EloResponse
 			try
 			{
 				$msgObject = json_decode($this->errors[0]->message);
+				
+				if(is_array($msgObject))
+					$msgObject = $msgObject[0];
+				
 				if(is_object($msgObject) && property_exists($msgObject, 'description'))
 					return $msgObject->description;
+				
 				if(is_object($msgObject) && property_exists($msgObject, 'error'))
 					return $msgObject->error;
 			}
