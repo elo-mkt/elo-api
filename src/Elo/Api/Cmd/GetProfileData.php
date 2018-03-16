@@ -8,7 +8,7 @@
 
 namespace Elo\Api\Cmd;
 
-use Elo\Api\SchemeHandler;
+use Elo\Api\SchemaHandler;
 
 class GetProfileData extends EloApiCMD
 {

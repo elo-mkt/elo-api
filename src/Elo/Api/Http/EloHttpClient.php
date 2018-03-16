@@ -11,6 +11,7 @@ namespace Elo\Api\Http;
 
 use Elo\Api\EloClient;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class EloHttpClient
 {
@@ -23,9 +24,17 @@ class EloHttpClient
 			'body'    => $body
 		];
 		
-		$response = $httpClient->request($method, EloClient::$PUBLIC_URL, $requestData);
+		try
+		{
+			$clientResponse = $httpClient->request($method, EloClient::$PUBLIC_URL, $requestData);
+			$response = json_decode($clientResponse->getBody());
+		}
+		catch (ClientException $e)
+		{
+			if($e->hasResponse()) $response = json_decode($e->getResponse()->getBody());
+			else throw $e;
+		}
 		
-		$response = json_decode($response->getBody());
 		return EloResponse::create($response, $requestData);
 	}
 	
@@ -37,9 +46,17 @@ class EloHttpClient
 			'body'    => $body
 		];
 		
-		$response = $httpClient->request($method, EloClient::$PRIVATE_URL, $requestData);
+		try
+		{
+			$clientResponse = $httpClient->request($method, EloClient::$PRIVATE_URL, $requestData);
+			$response = json_decode($clientResponse->getBody());
+		}
+		catch (ClientException $e)
+		{
+			if($e->hasResponse()) $response = json_decode($e->getResponse()->getBody());
+			else throw $e;
+		}
 		
-		$response = json_decode($response->getBody());
 		return EloResponse::create($response, $requestData);
 	}
 }

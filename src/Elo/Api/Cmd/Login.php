@@ -3,7 +3,7 @@
 namespace Elo\Api\Cmd;
 
 use Elo\Api\Crypt\EloCrypt;
-use Elo\Api\SchemeHandler;
+use Elo\Api\SchemaHandler;
 use Elo\Api\Http\EloSessionHandler;
 
 /**

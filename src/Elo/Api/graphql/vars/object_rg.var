@@ -1,0 +1,6 @@
+rg:{ 
+	%rgNumber% 
+	issuerOrganization: \"$issuerOrganization\", 
+	issuerState: \"$issuerState\", 
+	issueDate: \"$issueDate\" 
+}  

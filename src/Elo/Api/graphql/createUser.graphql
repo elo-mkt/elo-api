@@ -2,45 +2,28 @@
 	"query":"mutation {  
 		createUser( 
 			input:  {  
-				clientMutationId:\"051\", 
-				name:\"$name\", 
-				username: \"$username\", 
-				bcryptPassword: \"$password\", 
-				firstName: \"$firstName\",  
-				lastName: \"$lastName\",  
-				displayName: \"$displayName\", 
-				birthday: \"$birthday\", 
-				legalIds:{ 
-					cpf: \"$cpf\", 
-					rg:{ 
-						number: \"$rgNumber\", 
-						issuerOrganization: \"$issuerOrganization\", 
-						issuerState: \"$issuerState\", issueDate: \"$issueDate\" 
-					}  
-				},  
-				contacts:[
-					{ 
-						type:EMAIL, 
-						context: \"$emailContext\", 
-						value: \"$email\"  
-					},
-					{ 
-						type:PHONE, 
-						context: \"$phoneContext\", 
-						value: \"$phone\"  
-					}
-				],  
-				addresses: { 
-					context: \"$addressContext\", 
-					country: \"BRL\", 
-					city: \"$city\", 
-					state: \"$state\", 
-					stateAbbrev:\"$stateCode\", 
-					zip: \"$zip\", 
-					number: $number, 
-					place: \"$place\", 
-					complement: \"$complement\"
-				}
+				clientMutationId:\"051\",
+				%username% 
+				%password% 
+				%firstName% 
+				%lastName% 
+				%name%
+				%displayName% 
+				%birthday%  
+				%legalIds:cpf%
+				%legalIds:rg:rgNumber%
+				%contacts:emailDetails:email%
+				%contacts:emailDetails:emailContext%
+				%contacts:phoneDetails:phone%
+				%contacts:phoneDetails:phoneContext%
+				%addresses:addressContext%
+				%addresses:city%
+				%addresses:state%
+				%addresses:stateCode%
+				%addresses:zip%
+				%addresses:number%
+				%addresses:place%
+				%addresses:complement%
 			}
 		) 
 		{ 

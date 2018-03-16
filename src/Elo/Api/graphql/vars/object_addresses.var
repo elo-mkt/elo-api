@@ -1,0 +1,11 @@
+addresses: { 
+	%addressContext% 
+	country: \"BR\", 
+	%city% 
+	%state% 
+	%stateCode% 
+	%zip% 
+	%number% 
+	%place% 
+	%complement%
+}

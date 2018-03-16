@@ -11,7 +11,7 @@ namespace Elo\Api\Cmd;
 
 use Elo\Api\Http\EloHttpClient;
 use Elo\Api\Http\EloResponse;
-use Elo\Api\SchemeHandler;
+use Elo\Api\SchemaHandler;
 use GuzzleHttp\Client;
 
 abstract class EloApiCMD
@@ -87,7 +87,7 @@ abstract class EloApiCMD
 	
 	protected function call(array $data = [])
 	{
-		$payload = SchemeHandler::getScheme($this->graphQLFile, $data);
+		$payload = SchemaHandler::getSchema($this->graphQLFile, $data);
 		
 		if($this->isPrivateCall)
 			return $this->privateCall($payload, $this->method);
