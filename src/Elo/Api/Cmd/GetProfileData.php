@@ -8,7 +8,7 @@
 
 namespace Elo\Api\Cmd;
 
-use Elo\Api\SchemaHandler;
+use Elo\Api\Cmd\VO\UserData;
 
 class GetProfileData extends EloApiCMD
 {
@@ -26,6 +26,8 @@ class GetProfileData extends EloApiCMD
 		
 		if($this->failed())
 			return null;
+		
+		$this->getData()->userData = UserData::profileDataToUserData($this->getData()->user);
 		
 		return $this->getData()->user;
 	}

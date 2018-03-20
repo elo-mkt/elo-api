@@ -98,12 +98,14 @@ abstract class EloApiCMD
 	protected function publicCall($body, $method = "POST")
 	{
 		$this->response = EloHttpClient::publicCall($body, $method);
+		$this->response->command = $this;
 		return $this->response;
 	}
 	
 	protected function privateCall($body, $method = 'POST')
 	{
 		$this->response = EloHttpClient::privateCall($body, $method);
+		$this->response->command = $this;
 		return $this->response;
 	}
 }

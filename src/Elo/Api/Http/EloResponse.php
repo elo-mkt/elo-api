@@ -9,11 +9,17 @@
 namespace Elo\Api\Http;
 
 
+use Elo\Api\Cmd\EloApiCMD;
+
 class EloResponse
 {
 	private $errors;
 	private $data;
 	private $requestData;
+	public $responseData;
+	
+	/** @var  EloApiCMD */
+	public $command;
 	
 	
 	/**
@@ -25,6 +31,7 @@ class EloResponse
 	{
 		$response = new EloResponse();
 		$response->requestData = $requestData;
+		$response->responseData = $data;
 		
 		if(property_exists($data, 'errors') && $data->errors)
 			$response->errors = $data->errors;
