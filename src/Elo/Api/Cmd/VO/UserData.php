@@ -49,18 +49,25 @@ class UserData
 	
 	public static function profileDataToUserData($profileData)
 	{
-		$userData = new UserData();
-		$userData->username = $profileData->username;
-		$userData->firstName = $profileData->firstName;
-		$userData->lastName = $profileData->lastName;
-		$userData->name = $profileData->name;
-		$userData->birthday = $profileData->birthday;
-		
-		self::parseContacts($userData, $profileData);
-		self::parseAddresses($userData, $profileData);
-		self::parseLegalIds($userData, $profileData);
-		
-		return $userData;
+		try
+		{
+			$userData = new UserData();
+			$userData->username = $profileData->username;
+			$userData->firstName = $profileData->firstName;
+			$userData->lastName = $profileData->lastName;
+			$userData->name = $profileData->name;
+			$userData->birthday = $profileData->birthday;
+			
+			self::parseContacts($userData, $profileData);
+			self::parseAddresses($userData, $profileData);
+			self::parseLegalIds($userData, $profileData);
+			
+			return $userData;
+		}
+		catch(\Exception $e)
+		{
+			return null;
+		}
 	}
 	
 	public static function parseContacts(UserData &$userData, $profileData)

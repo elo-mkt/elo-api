@@ -9,6 +9,8 @@
 namespace Elo\Api\Cmd;
 
 use Elo\Api\Cmd\VO\UserData;
+use Elo\Api\EloClient;
+use Elo\Api\Http\EloSessionHandler;
 
 class GetProfileData extends EloApiCMD
 {
@@ -27,7 +29,12 @@ class GetProfileData extends EloApiCMD
 		if($this->failed())
 			return null;
 		
-		$this->getData()->userData = UserData::profileDataToUserData($this->getData()->user);
+		$userData = UserData::profileDataToUserData($this->getData()->user);
+		
+		if($userData)
+			$this->getData()->userData = UserData::profileDataToUserData($this->getData()->user);
+		else 
+			EloSessionHandler::destroy();
 		
 		return $this->getData()->user;
 	}
