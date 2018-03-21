@@ -9,8 +9,12 @@
 namespace Elo\Api\Http;
 
 
+use Elo\Api\EloClient;
+
 class EloSessionHandler
 {
+	private static $vars;
+	
 	private static function init()
 	{
 		$sessionName = '09a654cd41013c92ab86';
@@ -20,21 +24,39 @@ class EloSessionHandler
 	
 	public static function set($values)
 	{
-		self::init();
-		foreach ($values as $key=>$value)
-			$_SESSION["elo-api::".$key] = $value;
+		if(EloClient::$USE_SESSION)
+		{
+			self::init();
+			foreach ($values as $key=>$value)
+				$_SESSION["elo-api::".$key] = $value;
+		}
+		else
+		{
+			foreach ($values as $key=>$value)
+				self::$vars[$key] = $value;
+		}
 	}
 	
 	public static function get($key)
 	{
-		self::init();
-		return @$_SESSION["elo-api::".$key];
+		if(EloClient::$USE_SESSION)
+		{
+			self::init();
+			return @$_SESSION["elo-api::".$key];
+		}
+		
+		return @self::$vars[$key];
 	}
 	
 	public static function destroy()
 	{
-		self::init();
-		session_unset();
-		session_destroy();
+		self::$vars = [];
+		
+		if(EloClient::$USE_SESSION)
+		{
+			self::init();
+			session_unset();
+			session_destroy();
+		}
 	}
 }

@@ -32,6 +32,7 @@ use Elo\Api\Http\EloSessionHandler;
 
 class EloClient
 {
+	static $USE_SESSION         =false;
 	static $CLIENT_ID           =null;
 	static $BASIC_AUTHORIZATION =null;
 	static $PUBLIC_URL          =null;
@@ -50,6 +51,7 @@ class EloClient
 	 */
 	public static function init($settings)
 	{
+		self::$USE_SESSION          = strtolower($settings['ELO_USE_SESSION']) == 'true';
 		self::$CLIENT_ID            = $settings['ELO_CLIENT_ID'];
 		self::$BASIC_AUTHORIZATION  = $settings['ELO_BASIC_AUTHORIZATION'];
 		self::$PUBLIC_URL           = $settings['ELO_PUBLIC_URL'];
