@@ -15,7 +15,7 @@ class EloResponse
 {
 	private $errors;
 	private $data;
-	private $requestData;
+	public $requestData;
 	public $responseData;
 	
 	/** @var  EloApiCMD */
