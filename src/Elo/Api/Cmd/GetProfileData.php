@@ -22,6 +22,10 @@ class GetProfileData extends EloApiCMD
 		$this->graphQLFile = "profileData";
 	}
 	
+	/**
+	 * @return null
+	 * @throws \Exception
+	 */
 	public function execute()
 	{
 		$this->call();
@@ -29,12 +33,17 @@ class GetProfileData extends EloApiCMD
 		if($this->failed())
 			return null;
 		
-		$userData = UserData::profileDataToUserData($this->getData()->user);
+		$userData = null;
+		if(!$this->response->hasErrors())
+			$userData = UserData::profileDataToUserData($this->getData()->user);
 		
 		if($userData)
 			$this->getData()->userData = UserData::profileDataToUserData($this->getData()->user);
 		else 
+		{
 			EloSessionHandler::destroy();
+			throw new \Exception("Could not get profile data.");
+		}
 		
 		return $this->getData()->user;
 	}

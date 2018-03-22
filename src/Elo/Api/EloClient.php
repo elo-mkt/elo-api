@@ -60,10 +60,26 @@ class EloClient
 	}
 	
 	
+	public static function setAccessCredentials(string $cpf, string $accessToken)
+	{
+		EloSessionHandler::set([
+			"cpf" => $cpf,
+			"accessToken" => $accessToken,
+		]);
+	}
+	
 	public function __construct($settings = null)
 	{
 		if($settings) self::init($settings);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * @param $username

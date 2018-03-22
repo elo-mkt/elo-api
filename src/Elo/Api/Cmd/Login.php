@@ -3,7 +3,7 @@
 namespace Elo\Api\Cmd;
 
 use Elo\Api\Crypt\EloCrypt;
-use Elo\Api\SchemaHandler;
+use Elo\Api\EloClient;
 use Elo\Api\Http\EloSessionHandler;
 
 /**
@@ -41,22 +41,23 @@ class Login extends EloApiCMD
 		$responseData = $this->response->getData();
 		
 		if($responseData && property_exists($responseData, 'login'))
-		{
-			EloSessionHandler::set([
-				'accessToken'      => $responseData->login->accessToken,
-				'clientMutationId' => $responseData->login->clientMutationId
-			]);
-		}
-		
-		$this->loadDataIntoSession();
+			$this->loadDataIntoSession($responseData->login->accessToken);
 		
 		$this->checkCardHolders();
 	}
 	
-	private function loadDataIntoSession()
+	private function loadDataIntoSession($accessToken)
 	{
+		// command getCPF needs the accessToken stored in session.
+		EloSessionHandler::set(['accessToken' => $accessToken]);
+		
+		//
 		$cmd = new GetCPF();
 		$cmd->execute();
+		$cpf = $cmd->response->getData();
+		
+		//
+		EloClient::setAccessCredentials($cpf, $accessToken);
 	}
 	
 	private function checkCardHolders()

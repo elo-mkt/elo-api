@@ -20,11 +20,14 @@ class GetCPF extends EloApiCMD
 		parent::__construct();
 	}
 	
+	/**
+	 * @throws \Exception
+	 */
 	public function execute()
 	{
 		$eloClient = new EloClient();
 		if(!$eloClient->isLogged())
-			throw new \Exception('User is not logged in.');
+			throw new \Exception('Access token not informed.');
 		
 		$cpf = EloSessionHandler::get('cpf');
 		
@@ -37,7 +40,6 @@ class GetCPF extends EloApiCMD
 		if(is_null($cpf) && !is_null(EloSessionHandler::get('accessToken')))
 		{
 			$response = $eloClient->getProfile();
-			
 			if($response->isSuccess())
 				$cpf = $response->getData()->user->legalIds->cpf->number;
 		}
