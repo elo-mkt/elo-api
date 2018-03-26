@@ -253,7 +253,9 @@ class EloClient
 		return $cmd->response;
 	}
 	
-	
+	/**
+	 * @return EloResponse
+	 */
 	public function getCards()
 	{
 		$cmd = new GetCards();
