@@ -12,9 +12,6 @@
 					zip:\"$zip\", 
 					place:\"$place\"  
 				}, 
-				usageConstraints:{ 
-					maxUsage:10 
-				}, 
 				status:ACTIVE 
 			} 
 		) 
@@ -37,7 +34,8 @@
 				billingAddress{ 
 					context, 
 					country, 
-					city, 
+					city,
+                    place, 
 					number 
 				}, 
 				status{ 

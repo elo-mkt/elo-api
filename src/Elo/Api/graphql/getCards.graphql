@@ -18,9 +18,10 @@
                     }, 
                     billingAddress{ 
                         context, 
-                        country, 
-                        city, 
-                        number 
+                        country,
+                        city,
+                        place,
+                        number
                     }, 
                     status{ 
                         status 
