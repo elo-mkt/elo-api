@@ -11,6 +11,7 @@ namespace Elo\Api;
 
 class SchemaHandler
 {
+	static $debugQuery = false;
 	private $parents;
 	private $insertedParents;
 	private $keyParents;
@@ -65,7 +66,11 @@ class SchemaHandler
 		$graphQL = str_replace($keys, $values, $graphQL);
 		$graphQL = preg_replace('/%(\w+)(:+\w+)*%/i', " ", $graphQL);
 		
-//		echo $graphQL; exit;
+		if(self::$debugQuery)
+		{
+			echo $graphQL;
+			exit;
+		} 
 		
 		return $graphQL;
 	}

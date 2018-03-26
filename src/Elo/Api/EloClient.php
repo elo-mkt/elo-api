@@ -11,6 +11,7 @@ namespace Elo\Api;
 use Elo\Api\Cmd\CreateCard;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
+use Elo\Api\Cmd\GetCards;
 use Elo\Api\Cmd\GetChallenge;
 use Elo\Api\Cmd\GetCPF;
 use Elo\Api\Cmd\GetEloPublicKey;
@@ -248,6 +249,14 @@ class EloClient
 	public function deleteCard(string $cardId)
 	{
 		$cmd = new DeleteCard($cardId);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	
+	public function getCards()
+	{
+		$cmd = new GetCards();
 		$cmd->execute();
 		return $cmd->response;
 	}

@@ -11,6 +11,7 @@ namespace Elo\Api\Cmd;
 
 use Elo\Api\Cmd\VO\CardData;
 use Elo\Api\Crypt\JWTHandler;
+use Elo\Api\SchemaHandler;
 
 class CreateCard extends EloApiCMD
 {
@@ -45,6 +46,8 @@ class CreateCard extends EloApiCMD
 			"zip"            => $this->cardData->billingAddress->zip,
 			"place"          => $this->cardData->billingAddress->place,
 		];
+		
+//		SchemaHandler::$debugQuery = true;
 		
 		$this->call($data);
 		
