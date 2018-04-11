@@ -27,6 +27,12 @@ class CardBillingAddress
     
 	public function toArray()
 	{
-		return (array) $this;
+		$result = [];
+		$data = (array) $this;
+		
+		foreach ($data as $key=>$value)
+			if($value) $result[$key] = $value;
+		
+		return $result;
     }
 }
