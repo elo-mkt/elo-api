@@ -18,6 +18,7 @@ class CardBillingAddress
     public $zip;
     public $place;
     public $cardId;
+    public $number;
 	
 	public function __construct(string $cardId = null)
 	{

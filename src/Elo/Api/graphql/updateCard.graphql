@@ -10,8 +10,9 @@
 					city:\"$city\", 
 					state:\"$state\", 
 					zip:\"$zip\", 
-					place:\"$place\"  
-				}, 
+					place:\"$place\"
+                    %number%
+                }, 
 				status:ACTIVE 
 			} 
 		) 
