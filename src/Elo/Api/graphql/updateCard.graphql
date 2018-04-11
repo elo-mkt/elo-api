@@ -35,7 +35,9 @@
 					context, 
 					country, 
 					city,
-                    place, 
+                    place,
+                    state,
+                    zip,
 					number 
 				}, 
 				status{ 
