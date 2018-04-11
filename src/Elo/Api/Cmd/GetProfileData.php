@@ -42,7 +42,7 @@ class GetProfileData extends EloApiCMD
 		else 
 		{
 			EloSessionHandler::destroy();
-			throw new \Exception("Could not get profile data.");
+			throw new \Exception("INVALID TOKEN");
 		}
 		
 		return $this->getData()->user;
