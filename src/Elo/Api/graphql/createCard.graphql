@@ -11,7 +11,8 @@
   				city:\"$city\", 
   				state:\"$state\", 
   				zip:\"$zip\", 
-  				place:\"$place\"  
+  				place:\"$place\"
+                %number%
   			}, 
   			usageConstraints:{ 
   				maxUsage:10, 

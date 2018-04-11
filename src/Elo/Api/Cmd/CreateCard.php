@@ -45,6 +45,7 @@ class CreateCard extends EloApiCMD
 			"state"          => $this->cardData->billingAddress->state,
 			"zip"            => $this->cardData->billingAddress->zip,
 			"place"          => $this->cardData->billingAddress->place,
+			"number"         => $this->cardData->billingAddress->number,
 		];
 		
 //		SchemaHandler::$debugQuery = true;
