@@ -21,6 +21,8 @@
                         country,
                         city,
                         place,
+                        state,
+                        zip,
                         number
                     }, 
                     status{ 
