@@ -30,7 +30,7 @@ class SignUpSocial extends EloApiCMD
 	 * @param $accessToken
 	 * @param $expiresIn
 	 */
-	public function __construct(UserData $userData, $provider, $accessToken, $expiresIn)
+	public function __construct(UserData $userData, $provider, $accessToken, $expiresIn = null)
 	{
 		parent::__construct();
 		$this->userData = $userData;
