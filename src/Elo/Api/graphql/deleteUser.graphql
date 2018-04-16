@@ -1,0 +1,15 @@
+{
+	"query":"mutation {  
+		deleteUser( 
+			input:  {  
+				clientMutationId:\"051\",
+                userId:\"$userId\"
+			}
+		) 
+		{
+            userId,
+			name
+		} 
+	}",
+	"variables":""
+}

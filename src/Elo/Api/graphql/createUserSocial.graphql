@@ -1,0 +1,43 @@
+{
+	"query":"mutation {
+		createUser(
+			input: {
+				%name%
+				%firstName%
+				%lastName%
+				%username%
+				%displayName%
+				%birthday%
+				%legalIds:cpf%
+				%legalIds:rg:rgNumber%
+				%contacts:emailDetails:email%
+				%contacts:emailDetails:emailContext%
+				%contacts:phoneDetails:phone%
+				%contacts:phoneDetails:phoneContext%
+				%addresses:addressContext%
+				%addresses:city%
+				%addresses:state%
+				%addresses:stateCode%
+				%addresses:zip%
+				%addresses:number%
+				%addresses:place%
+				%addresses:complement%
+				socialNetwork: {
+					provider:\"FACEBOOK\",
+					%username%
+				},
+				oauth: {
+					accessToken:\"$accessToken\",
+					refreshToken:\"\",
+					scopes:\"email\",
+					%expiryTimestamp%
+				}
+			}
+		)
+		{
+			id, 
+			name
+		}
+	}",
+	"variables":null
+}

@@ -2,6 +2,7 @@
 	"query":"query {  
 		user(id:\"a\") 
 		{   
+            id,
 			name, 
 			firstName,  
 			lastName, 

@@ -11,6 +11,7 @@ namespace Elo\Api;
 use Elo\Api\Cmd\CreateCard;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
+use Elo\Api\Cmd\DeleteUser;
 use Elo\Api\Cmd\GetCards;
 use Elo\Api\Cmd\GetChallenge;
 use Elo\Api\Cmd\GetCPF;
@@ -18,9 +19,11 @@ use Elo\Api\Cmd\GetEloPublicKey;
 use Elo\Api\Cmd\GetProfileData;
 use Elo\Api\Cmd\GetLoginSalt;
 use Elo\Api\Cmd\Login;
+use Elo\Api\Cmd\LoginSocial;
 use Elo\Api\Cmd\RequestPasswordRequestByEmail;
 use Elo\Api\Cmd\ResetPassword;
 use Elo\Api\Cmd\SignUp;
+use Elo\Api\Cmd\SignUpSocial;
 use Elo\Api\Cmd\StorePublicKey;
 use Elo\Api\Cmd\UpdateCardBillingAddress;
 use Elo\Api\Cmd\UpdateProfile;
@@ -117,6 +120,30 @@ class EloClient
 	}
 	
 	/**
+	 * @param UserData $userData
+	 * @param $provider
+	 * @param $accessToken
+	 * @param $expiresIn
+	 * @return EloResponse
+	 */
+	public function signUpSocial(UserData $userData, $provider, $accessToken, $expiresIn)
+	{
+		$cmd = new SignUpSocial($userData, $provider, $accessToken, $expiresIn);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @return EloResponse
+	 */
+	public function deleteAccount()
+	{
+		$cmd = new DeleteUser();
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
 	 * @param $username
 	 * @param $password
 	 * @return EloResponse
@@ -124,6 +151,19 @@ class EloClient
 	public function login($username, $password)
 	{
 		$cmd = new Login($username, $password);
+		$cmd->execute();
+		return $cmd->response;
+	}
+	
+	/**
+	 * @param $username
+	 * @param $provider
+	 * @param $accessToken
+	 * @return EloResponse
+	 */
+	public function loginSocial($username, $provider, $accessToken)
+	{
+		$cmd = new LoginSocial($username, $provider, $accessToken);
 		$cmd->execute();
 		return $cmd->response;
 	}

@@ -1,0 +1,17 @@
+{
+    "query":"mutation{ 
+        socialNetworkOAuthLogin( 
+            input:{ 
+                clientMutationId:\"012\", 
+                provider:\"$provider\", 
+                username:\"$username\", 
+                accessToken:\"$accessToken\" 
+            }
+        )
+        { 
+            clientMutationId, 
+            accessToken
+        }
+    }",
+    "variables": null
+}
