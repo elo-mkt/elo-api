@@ -35,7 +35,6 @@ class UserData
 	public $complement;
 	public $phoneContext;
 	public $phone;
-	public $socialAccessToken;
 	
 	public function toArray()
 	{
