@@ -42,6 +42,11 @@ class EloResponse
 		return $response;
 	}
 	
+	public function hasData()
+	{
+		return $this->data != null;
+	}
+	
 	public function hasErrors()
 	{
 		return $this->errors != null;

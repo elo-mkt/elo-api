@@ -6,6 +6,8 @@
  * Time: 14:38
  */
 
+//phpinfo();exit;
+
 require_once 'test/Tester.php';
 require_once 'test/VOFactory.php';
 require_once __DIR__ . '/vendor/autoload.php';

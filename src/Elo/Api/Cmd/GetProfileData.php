@@ -34,7 +34,7 @@ class GetProfileData extends EloApiCMD
 			return null;
 		
 		$userData = null;
-		if(!$this->response->hasErrors())
+		if(!$this->response->hasErrors() || ($this->response->hasData() && $this->getData()->user))
 			$userData = UserData::profileDataToUserData($this->getData()->user);
 		
 		if($userData)
