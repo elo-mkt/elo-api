@@ -13,6 +13,8 @@ use Elo\Api\Cmd\EloApiCMD;
 
 class EloResponse
 {
+	public static $REQUESTS = [];
+	
 	private $errors;
 	private $data;
 	public $requestData;
@@ -32,6 +34,11 @@ class EloResponse
 		$response = new EloResponse();
 		$response->requestData = $requestData;
 		$response->responseData = $data;
+		
+		$REQUESTS[] = [
+			'request' => $requestData,
+			'response' => $data,
+		];
 		
 		if(property_exists($data, 'errors') && $data->errors)
 			$response->errors = $data->errors;
