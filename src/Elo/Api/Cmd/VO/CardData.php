@@ -27,7 +27,7 @@ class CardData
 	
 	public function __construct(string $holderId = null)
 	{
-		$this->billingAddress = new CardBillingAddress();
+//		$this->billingAddress = new CardBillingAddress();
 		$this->holderId = $holderId;
 	}
 	
@@ -35,15 +35,15 @@ class CardData
 	{
 		return json_encode([
 			"pan"               => $this->pan,
-			"name"              => $this->name,
-			"expiry"            => [
-				"month" => $this->expiry_month,
-				"year"  => $this->expiry_year
-			],
-			"csc"               => $this->csc,
-			"cscEntryTime"      => $this->cscEntryTime,
-			"authCode"          => $this->authCode,
-			"authCodeEntryTime" => $this->authCodeEntryTime
+//			"name"              => $this->name,
+//			"expiry"            => [
+//				"month" => $this->expiry_month,
+//				"year"  => $this->expiry_year
+//			],
+//			"csc"               => $this->csc,
+//			"cscEntryTime"      => $this->cscEntryTime,
+//			"authCode"          => $this->authCode,
+//			"authCodeEntryTime" => $this->authCodeEntryTime
 		]);
 	}
 }

@@ -39,13 +39,13 @@ class CreateCard extends EloApiCMD
 		$data = [
 			"encryptedCard"  => $this->jwtHandler->createSensitiveToken( $this->cardData->cardDetailsJson() ),
 			"holderId"       => $this->cardData->holderId,
-			"addressContext" => $this->cardData->billingAddress->context,
-			"country"        => $this->cardData->billingAddress->country,
-			"city"           => $this->cardData->billingAddress->city,
-			"state"          => $this->cardData->billingAddress->state,
-			"zip"            => $this->cardData->billingAddress->zip,
-			"place"          => $this->cardData->billingAddress->place,
-			"number"         => $this->cardData->billingAddress->number,
+			"addressContext" => $this->cardData->billingAddress ? $this->cardData->billingAddress->context : null,
+			"country"        => $this->cardData->billingAddress ? $this->cardData->billingAddress->country : null,
+			"city"           => $this->cardData->billingAddress ? $this->cardData->billingAddress->city : null,
+			"state"          => $this->cardData->billingAddress ? $this->cardData->billingAddress->state : null,
+			"zip"            => $this->cardData->billingAddress ? $this->cardData->billingAddress->zip : null,
+			"place"          => $this->cardData->billingAddress ? $this->cardData->billingAddress->place : null,
+			"number"         => $this->cardData->billingAddress ? $this->cardData->billingAddress->number : null,
 		];
 		
 //		SchemaHandler::$debugQuery = true;
