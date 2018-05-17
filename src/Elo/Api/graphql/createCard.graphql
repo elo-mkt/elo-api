@@ -4,20 +4,7 @@
   		input:{ 
   			clientMutationId:\"012\", 
   			sensitive:\"$encryptedCard\", 
-  			holderId:\"$holderId\", 
-  			billingAddress:{
-  				context:\"$addressContext\" 
-  				country:\"$country\", 
-  				city:\"$city\", 
-  				state:\"$state\", 
-  				zip:\"$zip\", 
-  				place:\"$place\"
-                %number%
-  			}, 
-  			usageConstraints:{ 
-  				maxUsage:10, 
-  				expiry:\"2018-01-01T01:01:01Z\"
-  			}
+  			holderId:\"$holderId\"
   		}
   	)
   	{

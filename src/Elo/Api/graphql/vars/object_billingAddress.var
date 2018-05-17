@@ -1,0 +1,9 @@
+billingAddress:{
+	%addressContext% 
+	%country% 
+	%city% 
+	%state% 
+	%zip% 
+	%number% 
+	%place% 
+}
