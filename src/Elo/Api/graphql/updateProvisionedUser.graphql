@@ -1,0 +1,62 @@
+{
+	"query":"mutation {  
+		updateProvisionedUser(
+			input:  {  
+				clientMutationId:\"232\",
+				%userId%
+				%birthday%
+				%legalIds:cpf%
+				%legalIds:rg:rgNumber%
+				%contacts:phoneDetails:phone%
+				%contacts:phoneDetails:phoneContext%
+				%addresses:addressContext%
+				%addresses:city%
+				%addresses:state%
+				%addresses:stateCode%
+				%addresses:zip%
+				%addresses:number%
+				%addresses:place%
+				%addresses:complement%
+			}
+		) 
+		{ 
+			clientMutationId
+                    user {
+                        id
+                        name
+                        legalIds {
+                            cpf { number }
+                        }
+                        contacts {
+                            type
+                            context
+                            value
+                            verified
+                        }
+                        addresses {
+                            context
+                            country
+                            city
+                            state
+                            zip
+                            district
+                            kind
+                            number
+                            place
+                            complement
+                            reference
+                            instructions
+                            lon
+                            lat
+                        }
+                        cards {
+                            id
+                            last4
+                            status { status }
+                        }
+                    }
+                    cards { id }
+		} 
+	}",
+	"variables":""
+}

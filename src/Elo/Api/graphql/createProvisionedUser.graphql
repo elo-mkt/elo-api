@@ -1,0 +1,32 @@
+{
+	"query":"mutation {  
+		createProvisionedUser(
+			input:  {  
+				clientMutationId:\"123\",
+				%name%
+				%birthday%
+				%origin%
+				%legalIds:cpf%
+				%legalIds:rg:rgNumber%
+				%contacts:emailDetails:email%
+				%contacts:emailDetails:emailContext%
+				%contacts:phoneDetails:phone%
+				%contacts:phoneDetails:phoneContext%
+				%addresses:addressContext%
+				%addresses:city%
+				%addresses:state%
+				%addresses:stateCode%
+				%addresses:zip%
+				%addresses:number%
+				%addresses:place%
+				%addresses:complement%
+			}
+		) 
+		{
+			clientMutationId
+            id
+            name
+		} 
+	}",
+	"variables":""
+}
