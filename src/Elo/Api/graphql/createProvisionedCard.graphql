@@ -1,0 +1,29 @@
+{
+  "query": "mutation {
+	createProvisionedCard(
+  		input:{
+  			clientMutationId:\"123\",
+			userId: \"$userId\",
+  			sensitive:\"$encryptedCard\",
+			bin: \"$bin\",
+			last4: \"$last4\"
+  		}
+  	)
+  	{
+		clientMutationId,
+		card {
+			id,
+			last4,
+			bin {
+				number
+			},
+			expiry {
+				month,
+				year
+			},
+			status { status }
+		}
+  	}
+  }",
+  "variables": null
+}

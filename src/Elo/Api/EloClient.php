@@ -12,6 +12,7 @@ use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
 use Elo\Api\Cmd\AllBins;
 use Elo\Api\Cmd\Bin;
 use Elo\Api\Cmd\CreateCard;
+use Elo\Api\Cmd\CreateProvisionedCard;
 use Elo\Api\Cmd\CreateProvisionedUser;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
@@ -48,9 +49,9 @@ class EloClient
 	static $PUBLIC_URL          =null;
 	static $PRIVATE_URL         =null;
 	static $PUBLIC_KEY_URL      =null;
-	
+
 	/**
-	 * @param $settings array Array with the following variables:  
+	 * @param $settings array Array with the following variables:
 	 * <pre>
 	 * CLIENT_ID:           The client id
 	 * BASIC_AUTHORIZATION: The token which authorizes the application to make api calls
@@ -68,8 +69,8 @@ class EloClient
 		self::$PRIVATE_URL          = $settings['ELO_PRIVATE_URL'];
 		self::$PUBLIC_KEY_URL       = $settings['ELO_PUBLIC_KEY_URL'];
 	}
-	
-	
+
+
 	public static function setAccessCredentials(string $cpf, string $accessToken)
 	{
 		EloSessionHandler::set([
@@ -77,20 +78,20 @@ class EloClient
 			"accessToken" => $accessToken,
 		]);
 	}
-	
+
 	public function __construct($settings = null)
 	{
 		if($settings) self::init($settings);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	/**
 	 * @param $username
 	 * @return EloResponse
@@ -101,7 +102,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param $username
 	 * @param $password
@@ -113,7 +114,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param UserData $userData
 	 * @return EloResponse
@@ -159,6 +160,18 @@ class EloClient
     }
 
     /**
+     * @param CardData $cardData
+     * @return EloResponse
+     * @throws \Exception
+     */
+    public function createProvisionedCard(CardData $cardData, $userId)
+    {
+        $cmd = new CreateProvisionedCard($cardData, $userId);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
      * @param string $bin
      * @return EloResponse
      */
@@ -175,7 +188,7 @@ class EloClient
         $cmd->execute();
         return $cmd->response;
     }
-	
+
 	/**
 	 * @param UserData $userData
 	 * @param $provider
@@ -189,7 +202,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @return EloResponse
 	 */
@@ -199,7 +212,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param $username
 	 * @param $password
@@ -211,7 +224,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param $username
 	 * @param $provider
@@ -224,15 +237,15 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public function logout()
 	{
 		EloSessionHandler::destroy();
 	}
-	
+
 	/**
 	 * @return bool
 	 */
@@ -240,7 +253,7 @@ class EloClient
 	{
 		return !is_null(EloSessionHandler::get('accessToken'));
 	}
-	
+
 	/**
 	 * @return EloResponse
 	 */
@@ -250,7 +263,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @return string
 	 * @throws \Exception
@@ -261,7 +274,7 @@ class EloClient
 		$cmd->execute();
 		return ($cmd->response->getData());
 	}
-	
+
 	/**
 	 * @param $keyId
 	 * @return EloResponse
@@ -272,7 +285,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param $keyId
 	 * @return EloResponse
@@ -283,7 +296,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @return EloResponse
 	 */
@@ -293,7 +306,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param UserData $userData
 	 * @return EloResponse
@@ -304,7 +317,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param string $cpf
 	 * @param string $email
@@ -316,7 +329,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param PasswordResetData $data
 	 * @return EloResponse
@@ -339,7 +352,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @param string $cardId
 	 * @return EloResponse
@@ -350,7 +363,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	/**
 	 * @return EloResponse
 	 */
@@ -360,7 +373,7 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
 	public function updateCardBillingAddress(CardBillingAddress $billingAddress)
 	{
 		$cmd = new UpdateCardBillingAddress($billingAddress);
