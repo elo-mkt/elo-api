@@ -38,7 +38,6 @@ class CreateProvisionedCard extends EloApiCMD
 		$storeResponse = $this->createAndStorePublicKey( $keyId, $this->userId );
 		if($storeResponse->hasErrors())
 			throw new \Exception($storeResponse->firstErrorMessage());
-        SchemaHandler::$debugQuery = true;
 		$data = [
 			"encryptedCard"  => $this->jwtHandler->createSensitiveToken( $this->cardData->cardDetailsJson() ),
 			"userId"         => $this->userId,
