@@ -1,8 +1,8 @@
 {
-	"query":"mutation{  
+	"query":"mutation{
 		updateUser(
-			input:  {  
-				clientMutationId:\"051\", 
+			input:  {
+				clientMutationId:\"051\",
 				id: \"$id\",
                 %username%
                 %password%
@@ -21,19 +21,20 @@
                 %addresses:city%
                 %addresses:state%
                 %addresses:stateCode%
+                %addresses:district%
                 %addresses:zip%
                 %addresses:number%
                 %addresses:place%
                 %addresses:complement%
 			}
-		) 
-		{ 
-			clientMutationId, 
-			user{ 
-				username, 
-				name 
-			} 
-		} 
+		)
+		{
+			clientMutationId,
+			user{
+				username,
+				name
+			}
+		}
 	}",
 	"variables":""
 }

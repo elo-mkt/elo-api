@@ -1,15 +1,15 @@
 {
-	"query":"mutation {  
-		createUser( 
-			input:  {  
+	"query":"mutation {
+		createUser(
+			input:  {
 				clientMutationId:\"051\",
-				%username% 
-				%password% 
-				%firstName% 
-				%lastName% 
+				%username%
+				%password%
+				%firstName%
+				%lastName%
 				%name%
-				%displayName% 
-				%birthday%  
+				%displayName%
+				%birthday%
 				%legalIds:cpf%
 				%legalIds:rg:rgNumber%
 				%contacts:emailDetails:email%
@@ -20,16 +20,17 @@
 				%addresses:city%
 				%addresses:state%
 				%addresses:stateCode%
+				%addresses:district%
 				%addresses:zip%
 				%addresses:number%
 				%addresses:place%
 				%addresses:complement%
 			}
-		) 
-		{ 
-			id, 
-			name 
-		} 
+		)
+		{
+			id,
+			name
+		}
 	}",
 	"variables":""
 }
