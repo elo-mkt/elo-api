@@ -20,7 +20,7 @@
 				%addresses:city%
 				%addresses:state%
 				%addresses:stateCode%
-				%addresses:district%
+				%addresses:burgh%
 				%addresses:zip%
 				%addresses:number%
 				%addresses:place%

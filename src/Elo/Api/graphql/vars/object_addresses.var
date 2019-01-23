@@ -4,7 +4,7 @@ addresses: {
 	%city%
 	%state%
 	%stateCode%
-	%district%
+	%burgh%
 	%zip%
 	%number%
 	%place%
