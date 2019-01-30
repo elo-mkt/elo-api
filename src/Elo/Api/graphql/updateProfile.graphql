@@ -21,7 +21,6 @@
                 %addresses:city%
                 %addresses:state%
                 %addresses:stateCode%
-                %addresses:district%
                 %addresses:zip%
                 %addresses:number%
                 %addresses:place%

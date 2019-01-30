@@ -25,6 +25,7 @@ class UserData
 	public $issueDate;
 	public $emailContext;
 	public $email;
+    public $country;
 	public $addressContext;
 	public $city;
 	public $stateCode;
