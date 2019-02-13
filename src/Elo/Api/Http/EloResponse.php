@@ -14,6 +14,7 @@ use Elo\Api\Cmd\EloApiCMD;
 class EloResponse
 {
 	public static $REQUESTS = [];
+	public static $ERRORS = [];
 	
 	private $errors;
 	private $data;
@@ -23,6 +24,13 @@ class EloResponse
 	/** @var  EloApiCMD */
 	public $command;
 	
+	/**
+	 * Clears all previous errors.
+	 */
+	public static function clearErrors()
+	{
+		self::$ERRORS = [];
+	}
 	
 	/**
 	 * @param $data
@@ -41,7 +49,10 @@ class EloResponse
 		];
 		
 		if(property_exists($data, 'errors') && $data->errors)
+		{
 			$response->errors = $data->errors;
+			self::$ERRORS = array_merge(self::$ERRORS, $data->errors);
+		}
 
 		if(property_exists($data, 'data') && $data->data)
 			$response->data = $data->data;

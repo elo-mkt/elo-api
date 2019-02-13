@@ -72,6 +72,14 @@ class EloClient
 		]);
 	}
 	
+	/**
+	 * Clears all previous stored response errors.
+	 */
+	public static function clearPreviousResponseErrors()
+	{
+		EloResponse::clearErrors();
+	}
+	
 	public function __construct($settings = null)
 	{
 		if($settings) self::init($settings);
