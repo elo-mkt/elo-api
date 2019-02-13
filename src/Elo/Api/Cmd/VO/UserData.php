@@ -25,10 +25,12 @@ class UserData
 	public $issueDate;
 	public $emailContext;
 	public $email;
+    public $country;
 	public $addressContext;
 	public $city;
 	public $stateCode;
 	public $state;
+	public $district;
 	public $zip;
 	public $number;
 	public $place;
@@ -36,18 +38,18 @@ class UserData
 	public $phoneContext;
 	public $phone;
 	public $socialAccessToken;
-	
+
 	public function toArray()
 	{
 		$result = [];
 		$data = (array) $this;
-		
+
 		foreach ($data as $key=>$value)
 			if($value) $result[$key] = $value;
-		
+
 		return $result;
 	}
-	
+
 	public static function profileDataToUserData($profileData)
 	{
 		try
@@ -58,11 +60,11 @@ class UserData
 			$userData->lastName = $profileData->lastName;
 			$userData->name = $profileData->name;
 			$userData->birthday = $profileData->birthday;
-			
+
 			self::parseContacts($userData, $profileData);
 			self::parseAddresses($userData, $profileData);
 			self::parseLegalIds($userData, $profileData);
-			
+
 			return $userData;
 		}
 		catch(\Exception $e)
@@ -70,7 +72,7 @@ class UserData
 			return null;
 		}
 	}
-	
+
 	public static function parseContacts(UserData &$userData, $profileData)
 	{
 		if($profileData->contacts)
@@ -90,24 +92,25 @@ class UserData
 			}
 		}
 	}
-	
+
 	public static function parseAddresses(UserData &$userData, $profileData)
 	{
 		if($profileData->addresses)
 		{
 			foreach ($profileData->addresses as $address)
 			{
-				if(strtolower($address->context) == "casa")
-				{
+//				if(strtolower($address->context) == "casa")
+//				{
 					$userData->addressContext = $address->context;
 					$userData->country = $address->country;
 					$userData->state = $address->state;
+					$userData->district = $address->district;
 					$userData->city = $address->city;
 					$userData->zip = $address->zip;
 					$userData->number = $address->number;
 					$userData->place = $address->place;
 					$userData->complement = $address->complement;
-				}
+//				}
 			}
 		}
 	}
@@ -120,7 +123,7 @@ class UserData
 			$legalIds = $profileData->legalIds;
 			if($legalIds->cpf)
 				$userData->cpf = $legalIds->cpf->number;
-			
+
 			if($legalIds->rg)
 			{
 				$userData->rgNumber = $legalIds->rg->number;

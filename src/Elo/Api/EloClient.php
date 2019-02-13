@@ -8,7 +8,12 @@
 
 namespace Elo\Api;
 
+use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
+use Elo\Api\Cmd\AllBins;
+use Elo\Api\Cmd\Bin;
 use Elo\Api\Cmd\CreateCard;
+use Elo\Api\Cmd\CreateProvisionedCard;
+use Elo\Api\Cmd\CreateProvisionedUser;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
 use Elo\Api\Cmd\DeleteUser;
@@ -27,9 +32,11 @@ use Elo\Api\Cmd\SignUpSocial;
 use Elo\Api\Cmd\StorePublicKey;
 use Elo\Api\Cmd\UpdateCardBillingAddress;
 use Elo\Api\Cmd\UpdateProfile;
+use Elo\Api\Cmd\UpdateProvisionedUser;
 use Elo\Api\Cmd\VO\CardBillingAddress;
 use Elo\Api\Cmd\VO\CardData;
 use Elo\Api\Cmd\VO\PasswordResetData;
+use Elo\Api\Cmd\VO\ProvisionedUserData;
 use Elo\Api\Cmd\VO\UserData;
 use Elo\Api\Http\EloResponse;
 use Elo\Api\Http\EloSessionHandler;
@@ -44,7 +51,7 @@ class EloClient
 	static $PUBLIC_KEY_URL      =null;
 	
 	/**
-	 * @param $settings array Array with the following variables:  
+	 * @param $settings array Array with the following variables:
 	 * <pre>
 	 * CLIENT_ID:           The client id
 	 * BASIC_AUTHORIZATION: The token which authorizes the application to make api calls
@@ -62,8 +69,8 @@ class EloClient
 		self::$PRIVATE_URL          = $settings['ELO_PRIVATE_URL'];
 		self::$PUBLIC_KEY_URL       = $settings['ELO_PUBLIC_KEY_URL'];
 	}
-	
-	
+
+
 	public static function setAccessCredentials(string $cpf, string $accessToken)
 	{
 		EloSessionHandler::set([
@@ -84,15 +91,15 @@ class EloClient
 	{
 		if($settings) self::init($settings);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	/**
 	 * @param $username
 	 * @return EloResponse
@@ -126,7 +133,70 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
+    /**
+     * @param UserData $userData
+     * @return EloResponse
+     */
+    public function createProvisionedUser(ProvisionedUserData $userData)
+    {
+        $cmd = new CreateProvisionedUser($userData);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param ProvisionedUserData $userData
+     * @return EloResponse
+     */
+    public function updateProvisionedUser(ProvisionedUserData $userData)
+    {
+        $cmd = new UpdateProvisionedUser($userData);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param string $userId
+     * @return EloResponse
+     */
+    public function addPublicKeyToProvisionedUser(string $keyId, string $userId)
+    {
+        $cmd = new AddPublicKeyToProvisionedUser($keyId, $userId);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param CardData $cardData
+     * @return EloResponse
+     * @throws \Exception
+     */
+    public function createProvisionedCard(CardData $cardData, $userId)
+    {
+        $cmd = new CreateProvisionedCard($cardData, $userId);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param string $bin
+     * @return EloResponse
+     */
+    public function bin(string $bin)
+    {
+        $cmd = new Bin($bin);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    public function allBins()
+    {
+        $cmd = new AllBins();
+        $cmd->execute();
+        return $cmd->response;
+    }
+
 	/**
 	 * @param UserData $userData
 	 * @param $provider
@@ -278,11 +348,12 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
-	/**
-	 * @param CardData $cardData
-	 * @return EloResponse
-	 */
+
+    /**
+     * @param CardData $cardData
+     * @return EloResponse
+     * @throws \Exception
+     */
 	public function createCard(CardData $cardData)
 	{
 		$cmd = new CreateCard($cardData);

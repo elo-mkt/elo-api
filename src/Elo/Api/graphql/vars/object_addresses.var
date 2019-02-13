@@ -1,11 +1,12 @@
-addresses: { 
-	%addressContext% 
-	country: \"BR\", 
-	%city% 
-	%state% 
-	%stateCode% 
-	%zip% 
-	%number% 
-	%place% 
+addresses: {
+	%addressContext%
+	country: \"BRA\",
+	%city%
+	%state%
+	%stateCode%
+	district: \"$district\"
+	%zip%
+	%number%
+	%place%
 	%complement%
 }

@@ -1,0 +1,70 @@
+{
+  "query": "mutation { 
+  	addPublicKeyToProvisionedUser(
+  		input:{
+  			clientMutationId:\"123\",
+  			userId:\"$userId\",
+  			key: \"{
+  			\\\"kty\\\":\\\"EC\\\",
+                \\\"kid\\\":\\\"$key_id\\\",
+                \\\"x\\\":\\\"$key_x\\\",
+                \\\"y\\\":\\\"$key_y\\\",
+                \\\"crv\\\":\\\"P-256\\\"
+  			}\",
+            format: JWK
+  		}
+  	)
+  	{
+  		clientMutationId
+        user {
+            id
+            verified
+            username
+            name
+            firstName
+            lastName
+            displayName
+            legalIds {
+                cpf { number }
+            }
+            birthday
+            age
+            gender
+            maritalStatus
+            income {
+                personal
+                family
+                currency
+            }
+            contacts {
+                type
+                context
+                value
+                verified
+            }
+            addresses {
+                context
+                country
+                city
+                state
+                zip
+                district
+                kind
+                number
+                place
+                complement
+                reference
+                instructions
+                lon
+                lat
+            }
+        }
+        publicKey {
+            id
+            key
+            fingerprint
+        }
+  	}
+  }",
+  "variables": null
+}

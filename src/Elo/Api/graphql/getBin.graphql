@@ -1,0 +1,18 @@
+{
+  "query": "mutation { 
+  	createCard(
+  		input:{ 
+  			clientMutationId:\"012\", 
+  			sensitive:\"$encryptedCard\", 
+  			holderId:\"$holderId\"
+  		}
+  	)
+  	{
+  		card {
+  			id, 
+  			sensitive
+  		}
+  	}
+  }",
+  "variables": null
+}

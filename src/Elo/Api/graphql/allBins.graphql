@@ -1,0 +1,44 @@
+{
+  "query": "query TableOfBins {
+  binTable {
+
+    sizeRange {
+      min
+      max
+    }
+
+    bins {
+
+      number
+
+      panSizeRange {
+        min
+        max
+      }
+
+      funding
+
+      isInternational
+
+      isCompany
+
+      isToken
+
+      product {
+        name
+      }
+
+      allowedCaptures {
+        name
+        code
+      }
+
+      usages {
+        name
+        code
+      }
+    }
+  }
+}",
+  "variables": null
+}
