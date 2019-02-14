@@ -81,7 +81,8 @@ class EloResponse
 			}
 			catch(\Exception $e)
 			{
-				
+				$error = (array) $error;
+				$error['code'] = '999';
 			}
 			
 			$parsedErrors[] = (object) $error;
