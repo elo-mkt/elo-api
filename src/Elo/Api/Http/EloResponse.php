@@ -51,13 +51,45 @@ class EloResponse
 		if(property_exists($data, 'errors') && $data->errors)
 		{
 			$response->errors = $data->errors;
-			self::$ERRORS = array_merge(self::$ERRORS, $data->errors);
+			self::$ERRORS = array_merge(self::$ERRORS, $response->parseErrorData($data->errors));
 		}
 
 		if(property_exists($data, 'data') && $data->data)
 			$response->data = $data->data;
 		
 		return $response;
+	}
+	
+	private function parseErrorData($errors)
+	{
+		$parsedErrors = [];
+		
+		foreach ($errors as $error)
+		{
+			try
+			{
+				$msgObject = json_decode($error->message);
+				
+				if(is_array($msgObject))
+					$msgObject = $msgObject[0];
+				
+//				var_dump($msgObject->code);exit;
+				
+				if(is_object($msgObject) && property_exists($msgObject, 'code'))
+				{
+					$error = (array) $error;
+					$error['code'] = $msgObject->code;
+				}
+			}
+			catch(\Exception $e)
+			{
+				
+			}
+			
+			$parsedErrors[] = (object) $error;
+		}
+		
+		return $parsedErrors;
 	}
 	
 	public function hasData()
