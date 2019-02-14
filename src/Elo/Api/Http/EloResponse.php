@@ -73,8 +73,6 @@ class EloResponse
 				if(is_array($msgObject))
 					$msgObject = $msgObject[0];
 				
-//				var_dump($msgObject->code);exit;
-				
 				if(is_object($msgObject) && property_exists($msgObject, 'code'))
 				{
 					$error = (array) $error;
