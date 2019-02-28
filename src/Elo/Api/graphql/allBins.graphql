@@ -37,6 +37,10 @@
         name
         code
       }
+
+      services {
+        name
+      }
     }
   }
 }",
