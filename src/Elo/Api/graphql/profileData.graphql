@@ -18,7 +18,7 @@
 			addresses {
 				context,
 				country,
-				state,
+				state(abbrev: true),
 				city,
 				zip,
 				number,
