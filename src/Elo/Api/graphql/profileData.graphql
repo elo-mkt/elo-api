@@ -9,6 +9,14 @@
 			displayName,
 			username,
 			birthday,
+			agreements{
+                agreementTerm{
+                    id,
+                    title,
+                    description,
+                    url
+                }
+            },
 			contacts
 			{
 				type,
