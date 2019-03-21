@@ -18,6 +18,7 @@ class UserData
 	public $displayName;
 	public $name;
 	public $birthday;
+	public $agreements;
 	public $cpf;
 	public $rgNumber;
 	public $issuerOrganization;
@@ -60,6 +61,7 @@ class UserData
 			$userData->lastName = $profileData->lastName;
 			$userData->name = $profileData->name;
 			$userData->birthday = $profileData->birthday;
+			$userData->agreements = $profileData->agreements;
 
 			self::parseContacts($userData, $profileData);
 			self::parseAddresses($userData, $profileData);
