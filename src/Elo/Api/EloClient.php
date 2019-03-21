@@ -8,6 +8,7 @@
 
 namespace Elo\Api;
 
+use Elo\Api\Cmd\AddAgreementMailMarketingToUser;
 use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
 use Elo\Api\Cmd\AllBins;
 use Elo\Api\Cmd\Bin;
@@ -33,6 +34,7 @@ use Elo\Api\Cmd\StorePublicKey;
 use Elo\Api\Cmd\UpdateCardBillingAddress;
 use Elo\Api\Cmd\UpdateProfile;
 use Elo\Api\Cmd\UpdateProvisionedUser;
+use Elo\Api\Cmd\UserAgreement;
 use Elo\Api\Cmd\VO\CardBillingAddress;
 use Elo\Api\Cmd\VO\CardData;
 use Elo\Api\Cmd\VO\PasswordResetData;
@@ -381,10 +383,36 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
-	public function updateCardBillingAddress(CardBillingAddress $billingAddress)
+
+    /**
+     * @param CardBillingAddress $billingAddress
+     * @return EloResponse
+     */
+    public function updateCardBillingAddress(CardBillingAddress $billingAddress)
 	{
 		$cmd = new UpdateCardBillingAddress($billingAddress);
+		$cmd->execute();
+		return $cmd->response;
+	}
+
+    /**
+     * @param string $userId
+     * @return EloResponse
+     */
+    public function addAgreementMailMarketingToUser(string $userId)
+	{
+		$cmd = new AddAgreementMailMarketingToUser($userId);
+		$cmd->execute();
+		return $cmd->response;
+	}
+
+    /**
+     *
+     * @return EloResponse
+     */
+    public function userAgreement()
+	{
+		$cmd = new UserAgreement();
 		$cmd->execute();
 		return $cmd->response;
 	}

@@ -1,0 +1,19 @@
+{
+	"query":"query {
+		user(id:\"a\")
+		{
+            id,
+			name,
+			agreements{
+                        agreementTerm{
+                            id,
+                            title,
+                            description,
+                            url
+                        }
+                    },
+		}
+	}",
+
+	"variables":null
+}
