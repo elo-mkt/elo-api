@@ -26,6 +26,7 @@ use Elo\Api\Cmd\GetProfileData;
 use Elo\Api\Cmd\GetLoginSalt;
 use Elo\Api\Cmd\Login;
 use Elo\Api\Cmd\LoginSocial;
+use Elo\Api\Cmd\RemoveAgreementMailMarketingToUser;
 use Elo\Api\Cmd\RequestPasswordRequestByEmail;
 use Elo\Api\Cmd\ResetPassword;
 use Elo\Api\Cmd\SignUp;
@@ -402,6 +403,17 @@ class EloClient
     public function addAgreementMailMarketingToUser(string $userId)
 	{
 		$cmd = new AddAgreementMailMarketingToUser($userId);
+		$cmd->execute();
+		return $cmd->response;
+	}
+
+    /**
+     * @param string $userId
+     * @return EloResponse
+     */
+    public function removeAgreementMailMarketingToUser(string $userId)
+	{
+		$cmd = new RemoveAgreementMailMarketingToUser($userId);
 		$cmd->execute();
 		return $cmd->response;
 	}
