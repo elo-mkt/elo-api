@@ -1,0 +1,13 @@
+{
+    "query": "query{
+        insuranceProductCategory{
+            id,
+            display,
+            products {
+                id,
+                display
+            }
+        }
+    }",
+    "variables":null
+}

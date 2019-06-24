@@ -1,0 +1,25 @@
+{
+    "query": "mutation{
+        createPurchaseProtectionInsurance(
+            input: {
+                clientMutationId:\"123\",
+                bin:\"636368\",
+                invoiceNumber:\"32\",
+                invoiceDate:\"2019-06-22\",
+                brand:\"Teste\",
+                model:\"Teste\",
+                value:35.6,
+                description:\"Seguro de premium contra defeitos de fabrica\",
+                productId:\"a8068633-194b-429f-af8c-7a3a350805bb\",
+            }
+        )
+        {
+            clientMutationId,
+            PurchaseProtectionInsurance {
+                insuranceId,
+                companyInsurance,
+                status
+            }
+        }
+    }"
+}
