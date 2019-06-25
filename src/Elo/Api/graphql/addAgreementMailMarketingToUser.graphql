@@ -1,6 +1,6 @@
 {
   "query": "mutation { 
-  	addAgreementToUser(
+  	addAgreementMailMarketingToUser(
   		input:{
   			clientMutationId:\"123\",
   			userId:\"$userId\",
