@@ -13,6 +13,7 @@ use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
 use Elo\Api\Cmd\AllBins;
 use Elo\Api\Cmd\Bin;
 use Elo\Api\Cmd\CreateCard;
+use Elo\Api\Cmd\CreateExtendedWarrantyInsurance;
 use Elo\Api\Cmd\CreateProvisionedCard;
 use Elo\Api\Cmd\CreateProvisionedUser;
 use Elo\Api\Cmd\CreatePurchaseProtectionInsurance;
@@ -449,9 +450,9 @@ class EloClient
      *
      * @return EloResponse
      */
-    public function createPurchaseProtectionInsurance()
+    public function createExtendedWarrantyInsurance($bin)
     {
-        $cmd = new CreatePurchaseProtectionInsurance();
+        $cmd = new CreateExtendedWarrantyInsurance($bin);
         $cmd->execute();
         return $cmd->response;
     }

@@ -28,7 +28,9 @@ class CreateTravelInsurance extends EloApiCMD
 
     public function execute()
     {
-        $data = $this->userData->toArray();
+        $data                       = $this->userData->toArray();
+        $data['bin']                = $this->bin;
+        $data['politicalExposure']  = $this->politicalExposure;
         $this->call($data);
     }
 }

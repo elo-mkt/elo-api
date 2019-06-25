@@ -2,7 +2,7 @@
 "query":"mutation{
     createTravelInsurance(input:{
         clientMutationId: \"123\",
-        bin: \"509052\",
+        %bin%
         journey: {
             trips: [
             {
