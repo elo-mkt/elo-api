@@ -27,11 +27,7 @@
                     }, 
                     status{ 
                         status 
-                    }, 
-                    usageConstraints{ 
-                        maxUsage, 
-                        expiry 
-                    }, 
+                    },
                     availableServices{ 
                         id, 
                         name, 
