@@ -4,18 +4,28 @@
 namespace Elo\Api\Cmd;
 
 
+use Elo\Api\Cmd\VO\PurchaseProtectionData;
+use Elo\Api\Cmd\VO\UserData;
+
 class CreatePurchaseProtectionInsurance extends EloApiCMD
 {
-    public function __construct()
+    public $purchaseData;
+    public $bin;
+
+    public function __construct(PurchaseProtectionData $purchaseData, $bin)
     {
         parent::__construct();
-//        $this->userData = $userData;
+        $this->purchaseData = $purchaseData;
+        $this->bin = $bin;
         $this->isPrivateCall = true;
         $this->graphQLFile = "createPurchaseProtectionInsurance";
     }
 
     public function execute()
     {
-        $this->call();
+        $data = $this->purchaseData->toArray();
+        $data['bin'] = $this->bin;
+
+        $this->call($data);
     }
 }

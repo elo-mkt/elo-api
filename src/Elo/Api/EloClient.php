@@ -461,6 +461,17 @@ class EloClient
      *
      * @return EloResponse
      */
+    public function createPurchaseProtectionInsurance($purchaseData, $bin)
+    {
+        $cmd = new CreatePurchaseProtectionInsurance($purchaseData, $bin);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     *
+     * @return EloResponse
+     */
     public function listCategoriesProducts()
     {
         $cmd = new InsuranceProductCategory();
