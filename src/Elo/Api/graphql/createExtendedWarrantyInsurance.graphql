@@ -1,0 +1,17 @@
+{
+"query":"mutation{
+    createExtendedWarrantyInsurance(input:{
+        clientMutationId:\"123\"
+        %bin%
+        value: 1
+    })
+    {
+        clientMutationId,
+        extendedWarrantyInsurance{
+            insuranceId,
+            companyInsurance
+            status
+        }
+    }
+}"
+}

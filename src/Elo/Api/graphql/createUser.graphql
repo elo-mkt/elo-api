@@ -8,6 +8,8 @@
 				%firstName%
 				%lastName%
 				%name%
+				%gender%
+				%maritalStatus%
 				%displayName%
 				%birthday%
 				%legalIds:cpf%

@@ -12,7 +12,8 @@
 			"email": "solano@catskillet.com"
 		}
 	],
-	"minimum-stability": "stable",
+	"minimum-stability": "master",
+    "prefer-stable": true,
 	"require": {
 		"web-token/jwt-framework": "1.0.6",
 		"guzzlehttp/guzzle": "^6.3"

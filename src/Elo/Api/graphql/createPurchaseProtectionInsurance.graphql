@@ -1,0 +1,26 @@
+{
+    "query": "mutation{
+        createPurchaseProtectionInsurance(
+            input: {
+                clientMutationId:\"123\",
+                %bin%
+                %invoiceNumber%
+                %invoiceDate%
+                %brand%
+                %model%
+                %value%
+                %description%
+                %productId%
+            }
+        )
+        {
+            clientMutationId,
+            PurchaseProtectionInsurance {
+                insuranceId,
+                companyInsurance,
+                status
+            }
+        }
+    }",
+    "variables":null
+}

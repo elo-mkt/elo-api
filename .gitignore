@@ -3,3 +3,5 @@ vendor
 Tester.php
 VOFactory.php
 test.zip
+docker-compose.yml
+docker

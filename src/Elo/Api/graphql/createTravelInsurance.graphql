@@ -1,0 +1,64 @@
+{
+"query":"mutation{
+    createTravelInsurance(input:{
+        clientMutationId: \"123\",
+        %bin%
+        journey: {
+            trips: [
+            {
+                travelers: [
+                    {
+                        %legalIds:cpf%
+                        %name%
+                        %birthday%
+                        gender: $gender
+                        %maritalStatus%
+                        %address:addressContext%
+                        %address:city%
+                        %address:state%
+                        %address:stateCode%
+                        %address:burgh%
+                        %address:zip%
+                        %address:number%
+                        %address:place%
+                        %address:complement%
+                        %contacts:emailDetails:email%
+                        %contacts:emailDetails:emailContext%
+                        %contacts:phoneDetails:phone%
+                        %contacts:phoneDetails:phoneContext%
+                        politicalExposure: false
+                    }
+                ]
+            }
+        ]
+    }
+    }){
+        travelInsurance{
+            bin{
+                number
+                brand {
+                    name
+                }
+                product {
+                    name
+                    id
+                }
+            },
+            journey {
+                trips {
+                    travelers {
+                        insurances {
+                            insuranceId
+                            description
+                            status
+                        }
+                    name
+                }
+            }
+        }
+        startDate,
+        endDate
+        }
+    }
+}"
+}

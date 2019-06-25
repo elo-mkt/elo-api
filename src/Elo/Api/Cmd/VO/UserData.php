@@ -39,6 +39,8 @@ class UserData
 	public $phoneContext;
 	public $phone;
 	public $socialAccessToken;
+	public $gender;
+	public $maritalStatus;
 
 	public function toArray()
 	{

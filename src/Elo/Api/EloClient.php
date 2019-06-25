@@ -9,12 +9,16 @@
 namespace Elo\Api;
 
 use Elo\Api\Cmd\AddAgreementMailMarketingToUser;
+use Elo\Api\Cmd\AddAgreementToProvisionedUser;
 use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
 use Elo\Api\Cmd\AllBins;
 use Elo\Api\Cmd\Bin;
 use Elo\Api\Cmd\CreateCard;
+use Elo\Api\Cmd\CreateExtendedWarrantyInsurance;
 use Elo\Api\Cmd\CreateProvisionedCard;
 use Elo\Api\Cmd\CreateProvisionedUser;
+use Elo\Api\Cmd\CreatePurchaseProtectionInsurance;
+use Elo\Api\Cmd\CreateTravelInsurance;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
 use Elo\Api\Cmd\DeleteUser;
@@ -24,6 +28,7 @@ use Elo\Api\Cmd\GetCPF;
 use Elo\Api\Cmd\GetEloPublicKey;
 use Elo\Api\Cmd\GetProfileData;
 use Elo\Api\Cmd\GetLoginSalt;
+use Elo\Api\Cmd\InsuranceProductCategory;
 use Elo\Api\Cmd\Login;
 use Elo\Api\Cmd\LoginSocial;
 use Elo\Api\Cmd\RemoveAgreementMailMarketingToUser;
@@ -428,4 +433,61 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
+
+    /**
+     * @param UserData $userData
+     * @param string $bin
+     * @param boolean $politicalExposure
+     * @return EloResponse
+     */
+    public function createTravelInsurance($userData, $bin, $politicalExposure)
+    {
+        $cmd = new CreateTravelInsurance($userData, $bin, $politicalExposure);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     *
+     * @return EloResponse
+     */
+    public function createExtendedWarrantyInsurance($bin)
+    {
+        $cmd = new CreateExtendedWarrantyInsurance($bin);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     *
+     * @return EloResponse
+     */
+    public function createPurchaseProtectionInsurance($purchaseData, $bin)
+    {
+        $cmd = new CreatePurchaseProtectionInsurance($purchaseData, $bin);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     *
+     * @return EloResponse
+     */
+    public function listCategoriesProducts()
+    {
+        $cmd = new InsuranceProductCategory();
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     *
+     * @return EloResponse
+     */
+    public function addAgreementToProvisionedUser($user_id)
+    {
+        $cmd = new AddAgreementToProvisionedUser($user_id);
+        $cmd->execute();
+        return $cmd->response;
+    }
 }
