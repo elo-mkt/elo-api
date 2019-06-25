@@ -9,6 +9,7 @@
 namespace Elo\Api;
 
 use Elo\Api\Cmd\AddAgreementMailMarketingToUser;
+use Elo\Api\Cmd\AddAgreementToProvisionedUser;
 use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
 use Elo\Api\Cmd\AllBins;
 use Elo\Api\Cmd\Bin;
@@ -475,6 +476,17 @@ class EloClient
     public function listCategoriesProducts()
     {
         $cmd = new InsuranceProductCategory();
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     *
+     * @return EloResponse
+     */
+    public function addAgreementToProvisionedUser($user_id)
+    {
+        $cmd = new AddAgreementToProvisionedUser($user_id);
         $cmd->execute();
         return $cmd->response;
     }
