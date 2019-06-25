@@ -8,8 +8,8 @@
 				%firstName%
 				%lastName%
 				%name%
-				gender: $gender,
-				maritalStatus: $maritalStatus,
+				%gender%
+				%maritalStatus%
 				%displayName%
 				%birthday%
 				%legalIds:cpf%
