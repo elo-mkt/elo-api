@@ -1,6 +1,6 @@
 {
   "query": "mutation { 
-  	addAgreementToUser(
+  	addAgreementToProvisionedUser(
   		input:{
   			clientMutationId:\"123\",
   			userId:\"$userId\",
