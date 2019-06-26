@@ -8,9 +8,8 @@
 
 namespace Elo\Api\Cmd;
 
-
-use App\catskillet\api\src\Elo\Api\Cmd\VO\ProvisionedUserData;
-use App\catskillet\api\src\Elo\Api\Cmd\VO\UserData;
+use Elo\Api\Cmd\VO\ProvisionedUserData;
+use Elo\Api\Cmd\VO\UserData;
 
 class GetProvisionedUser extends EloApiCMD
 {
