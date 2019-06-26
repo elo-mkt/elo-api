@@ -27,6 +27,7 @@ use Elo\Api\Cmd\GetChallenge;
 use Elo\Api\Cmd\GetCPF;
 use Elo\Api\Cmd\GetEloPublicKey;
 use Elo\Api\Cmd\GetProfileData;
+use Elo\Api\Cmd\GetProvisionedUser;
 use Elo\Api\Cmd\GetLoginSalt;
 use Elo\Api\Cmd\InsuranceProductCategory;
 use Elo\Api\Cmd\Login;
@@ -141,6 +142,17 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
+
+    /**
+     * @param string $userData
+     * @return EloResponse
+     */
+    public function getProvisionedUser($usercpf)
+    {
+        $cmd = new GetProvisionedUser($usercpf);
+        $cmd->execute();
+        return $cmd->response;
+    }
 
     /**
      * @param UserData $userData
