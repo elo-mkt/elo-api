@@ -9,6 +9,8 @@
 				%legalIds:rg:rgNumber%
 				%contacts:phoneDetails:phone%
 				%contacts:phoneDetails:phoneContext%
+				%contacts:emailDetails:email%
+                %contacts:emailDetails:emailContext%
 				%addresses:addressContext%
 				%addresses:city%
 				%addresses:state%
