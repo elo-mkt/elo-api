@@ -5,6 +5,7 @@
 				clientMutationId:\"232\",
 				%userId%
 				%birthday%
+				%name%
 				%legalIds:cpf%
 				%legalIds:rg:rgNumber%
                 contacts: [
