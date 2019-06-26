@@ -9,14 +9,14 @@
 				%legalIds:rg:rgNumber%
                 contacts: [
                     {
-                        type: PHONE,
-                        context: \"$phoneContext\",
-                        value: \"$phone\"
-                    },
-                    {
                         type: EMAIL,
                         context: \"$emailContext\",
                         value: \"$email\"
+                    },
+                    {
+                        type: PHONE,
+                        context: \"$phoneContext\",
+                        value: \"$phone\"
                     }
                 ]
 				%addresses:addressContext%
