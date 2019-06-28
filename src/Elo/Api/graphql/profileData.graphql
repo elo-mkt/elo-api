@@ -9,6 +9,7 @@
 			displayName,
 			username,
 			birthday,
+			origin,
 			agreements{
                 agreementTerm{
                     id,

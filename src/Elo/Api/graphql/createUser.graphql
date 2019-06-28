@@ -12,6 +12,7 @@
 				%maritalStatus%
 				%displayName%
 				%birthday%
+				%origin%
 				%legalIds:cpf%
 				%legalIds:rg:rgNumber%
 				%contacts:emailDetails:email%
