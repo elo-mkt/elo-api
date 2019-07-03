@@ -1,11 +1,1 @@
-{
-	"query":"mutation {  
-		createLoginSalt(input: { clientMutationId:\"11212\",  username: \"$username\"   }  )  
-		{ 
-			username, 
-			salt, 
-			expiry 
-		}
-	}",
-	"variables":null
-}
+{"query":"mutation {createLoginSalt(input: { clientMutationId:\"11212\",  username: \"$username\"   }  ){username,salt,expiry}}","variables":null}

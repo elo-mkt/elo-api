@@ -29,11 +29,12 @@ class SignUp extends EloApiCMD
 	public function execute()
 	{
 		$eloCrypt = new EloCrypt();
-		
+
 		$data = $this->userData->toArray();
 		$data['password'] = $eloCrypt->bcryptUserPassword($this->userData->username, $this->userData->password);
+        
 		$this->call( $data );
-		
+
 		if($this->failed())
 			return;
 		

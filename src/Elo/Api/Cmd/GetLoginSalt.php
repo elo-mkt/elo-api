@@ -26,7 +26,6 @@ class GetLoginSalt extends EloApiCMD
 		
 		if($this->hasErrors())
 			return $this->response->firstErrorMessage();
-		
 		return $this->getData()->createLoginSalt->salt;
 	}
 }
