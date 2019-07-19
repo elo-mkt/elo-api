@@ -26,6 +26,7 @@ class UserData
 	public $issueDate;
 	public $emailContext;
 	public $email;
+	public $origin;
     public $country;
 	public $addressContext;
 	public $city;
@@ -62,6 +63,7 @@ class UserData
 			$userData->firstName = $profileData->firstName;
 			$userData->lastName = $profileData->lastName;
 			$userData->name = $profileData->name;
+			$userData->origin = $profileData->origin;
 			$userData->birthday = $profileData->birthday;
 			$userData->agreements = $profileData->agreements;
 
