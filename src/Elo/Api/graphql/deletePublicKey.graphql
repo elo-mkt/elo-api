@@ -16,8 +16,7 @@
 			}, 
 			publicKey{ 
 				id, 
-				key, 
-				fingerprint 
+				key
 			}  
 		}
 	}",
