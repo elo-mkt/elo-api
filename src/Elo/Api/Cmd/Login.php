@@ -39,7 +39,7 @@ class Login extends EloApiCMD
 			return $this->response->firstErrorMessage();
 		
 		$responseData = $this->response->getData();
-		
+
 		if($responseData && property_exists($responseData, 'login'))
 			$this->loadDataIntoSession($responseData->login->accessToken);
 		
@@ -50,7 +50,7 @@ class Login extends EloApiCMD
 	{
 		// command getCPF needs the accessToken stored in session.
 		EloSessionHandler::set(['accessToken' => $accessToken]);
-		
+
 		//
 		$cmd = new GetCPF();
 		$cmd->execute();

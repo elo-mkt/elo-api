@@ -7,8 +7,18 @@
 				%birthday%
 				%legalIds:cpf%
 				%legalIds:rg:rgNumber%
-				%contacts:phoneDetails:phone%
-				%contacts:phoneDetails:phoneContext%
+                contacts: [
+                    {
+                        type: EMAIL,
+                        context: \"$emailContext\",
+                        value: \"$email\"
+                    },
+                    {
+                        type: PHONE,
+                        context: \"$phoneContext\",
+                        value: \"$phone\"
+                    }
+                ]
 				%addresses:addressContext%
 				%addresses:city%
 				%addresses:state%
