@@ -63,6 +63,7 @@ class UserData
 			$userData->firstName = $profileData->firstName;
 			$userData->lastName = $profileData->lastName;
 			$userData->name = $profileData->name;
+			$userData->gender = $profileData->gender;
 			$userData->origin = $profileData->origin;
 			$userData->birthday = $profileData->birthday;
 			$userData->agreements = $profileData->agreements;
