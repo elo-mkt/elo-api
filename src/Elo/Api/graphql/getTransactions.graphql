@@ -1,0 +1,1 @@
+{"query":"query { node(%cardId%) { ... on Card { id transactions(filter:{ startTimestamp:\"$startTimestamp\", endTimestamp:\"$endTimestamp\", status: $status }) { pageInfo{ hasPreviousPage hasNextPage startCursor endCursor } totalCount edges{ cursor node{ id timestamp value currency status } } } } } }","variables":null}

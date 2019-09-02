@@ -29,6 +29,7 @@ use Elo\Api\Cmd\GetEloPublicKey;
 use Elo\Api\Cmd\GetProfileData;
 use Elo\Api\Cmd\GetProvisionedUser;
 use Elo\Api\Cmd\GetLoginSalt;
+use Elo\Api\Cmd\GetTransactions;
 use Elo\Api\Cmd\InsuranceProductCategory;
 use Elo\Api\Cmd\Login;
 use Elo\Api\Cmd\LoginSocial;
@@ -46,9 +47,11 @@ use Elo\Api\Cmd\VO\CardBillingAddress;
 use Elo\Api\Cmd\VO\CardData;
 use Elo\Api\Cmd\VO\PasswordResetData;
 use Elo\Api\Cmd\VO\ProvisionedUserData;
+use Elo\Api\Cmd\VO\PurchaseProtectionData;
 use Elo\Api\Cmd\VO\UserData;
 use Elo\Api\Http\EloResponse;
 use Elo\Api\Http\EloSessionHandler;
+use FG\ASN1\Universal\Enumerated;
 
 class EloClient
 {
@@ -460,7 +463,7 @@ class EloClient
     }
 
     /**
-     *
+     * @param string $bin
      * @return EloResponse
      */
     public function createExtendedWarrantyInsurance($bin)
@@ -471,7 +474,8 @@ class EloClient
     }
 
     /**
-     *
+     * @param PurchaseProtectionData $purchaseData
+     * @param string $bin
      * @return EloResponse
      */
     public function createPurchaseProtectionInsurance($purchaseData, $bin)
@@ -493,12 +497,26 @@ class EloClient
     }
 
     /**
-     *
+     * @param integer $user_id
      * @return EloResponse
      */
     public function addAgreementToProvisionedUser($user_id)
     {
         $cmd = new AddAgreementToProvisionedUser($user_id);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param string $cardId
+     * @param string $startTimestamp
+     * @param string $endTimestamp
+     * @param Enumerated $statusTransactions
+     * @return EloResponse
+     */
+    public function getTransactions($cardId, $startTimestamp, $endTimestamp, $statusTransactions)
+    {
+        $cmd = new GetTransactions($cardId, $startTimestamp, $endTimestamp, $statusTransactions);
         $cmd->execute();
         return $cmd->response;
     }
