@@ -6,6 +6,7 @@
 				%name%
 				%birthday%
 				%origin%
+				%gender%
 				%legalIds:cpf%
 				%legalIds:rg:rgNumber%
 				%contacts:emailDetails:email%
