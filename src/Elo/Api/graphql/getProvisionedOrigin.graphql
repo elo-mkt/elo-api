@@ -1,0 +1,1 @@
+{ "query": "query { provisionedUsers( filter:{ origin: \"$origin\" }){ edges {node {id username name birthday gender agreements { agreementTerm { id description } } contacts { type context value } legalIds { cpf { number } } origin cards { id last4 bin { number } }}}}}","variables": null}

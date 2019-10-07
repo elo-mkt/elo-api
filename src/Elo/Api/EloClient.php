@@ -27,6 +27,7 @@ use Elo\Api\Cmd\GetChallenge;
 use Elo\Api\Cmd\GetCPF;
 use Elo\Api\Cmd\GetEloPublicKey;
 use Elo\Api\Cmd\GetProfileData;
+use Elo\Api\Cmd\GetProvisionedOrigin;
 use Elo\Api\Cmd\GetProvisionedUser;
 use Elo\Api\Cmd\GetLoginSalt;
 use Elo\Api\Cmd\GetTransactions;
@@ -153,6 +154,17 @@ class EloClient
     public function getProvisionedUser($usercpf)
     {
         $cmd = new GetProvisionedUser($usercpf);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param $origin
+     * @return EloResponse
+     */
+    public function getProvisionedOriginLeads($origin)
+    {
+        $cmd = new GetProvisionedOrigin($origin);
         $cmd->execute();
         return $cmd->response;
     }
