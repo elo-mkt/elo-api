@@ -38,6 +38,7 @@ use Elo\Api\Cmd\RemoveAgreementMailMarketingToUser;
 use Elo\Api\Cmd\RequestPasswordRequestByEmail;
 use Elo\Api\Cmd\RequestPasswordReset;
 use Elo\Api\Cmd\ResetPassword;
+use Elo\Api\Cmd\ResetPasswordByType;
 use Elo\Api\Cmd\SignUp;
 use Elo\Api\Cmd\SignUpSocial;
 use Elo\Api\Cmd\StorePublicKey;
@@ -47,6 +48,7 @@ use Elo\Api\Cmd\UpdateProvisionedUser;
 use Elo\Api\Cmd\UserAgreement;
 use Elo\Api\Cmd\VO\CardBillingAddress;
 use Elo\Api\Cmd\VO\CardData;
+use Elo\Api\Cmd\VO\PasswordResetByTypeData;
 use Elo\Api\Cmd\VO\PasswordResetData;
 use Elo\Api\Cmd\VO\ProvisionedUserData;
 use Elo\Api\Cmd\VO\PurchaseProtectionData;
@@ -396,6 +398,17 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
+
+    /**
+     * @param PasswordResetByTypeData $data
+     * @return EloResponse
+     */
+    public function resetPasswordByType(PasswordResetByTypeData $data)
+    {
+        $cmd = new ResetPasswordByType($data);
+        $cmd->execute();
+        return $cmd->response;
+    }
 
     /**
      * @param CardData $cardData
