@@ -1,0 +1,15 @@
+{
+  "query": "query {
+  	maskedUserContacts (
+		legalIds:{
+			cpf:\"$cpf\"
+		},
+	)
+  	{
+		id,
+		type,
+		value
+  	}
+  }",
+  "variables": null
+}

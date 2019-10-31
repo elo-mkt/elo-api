@@ -26,6 +26,7 @@ use Elo\Api\Cmd\GetCards;
 use Elo\Api\Cmd\GetChallenge;
 use Elo\Api\Cmd\GetCPF;
 use Elo\Api\Cmd\GetEloPublicKey;
+use Elo\Api\Cmd\GetMaskedUserContacts;
 use Elo\Api\Cmd\GetProfileData;
 use Elo\Api\Cmd\GetProvisionedOrigin;
 use Elo\Api\Cmd\GetProvisionedUser;
@@ -231,6 +232,13 @@ class EloClient
     public function allBins()
     {
         $cmd = new AllBins();
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    public function maskedUserContacts(string $cpf)
+    {
+        $cmd = new GetMaskedUserContacts($cpf);
         $cmd->execute();
         return $cmd->response;
     }
