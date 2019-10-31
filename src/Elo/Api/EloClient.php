@@ -36,6 +36,7 @@ use Elo\Api\Cmd\Login;
 use Elo\Api\Cmd\LoginSocial;
 use Elo\Api\Cmd\RemoveAgreementMailMarketingToUser;
 use Elo\Api\Cmd\RequestPasswordRequestByEmail;
+use Elo\Api\Cmd\RequestPasswordReset;
 use Elo\Api\Cmd\ResetPassword;
 use Elo\Api\Cmd\SignUp;
 use Elo\Api\Cmd\SignUpSocial;
@@ -372,7 +373,19 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
-	
+
+    /**
+     * @param string $cpf
+     * @param string $email
+     * @return EloResponse
+     */
+    public function requestPasswordReset(string $cpf, string $type)
+    {
+        $cmd = new RequestPasswordReset($cpf, $type);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
 	/**
 	 * @param PasswordResetData $data
 	 * @return EloResponse
