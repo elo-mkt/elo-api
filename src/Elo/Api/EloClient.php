@@ -22,6 +22,7 @@ use Elo\Api\Cmd\CreateTravelInsurance;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
 use Elo\Api\Cmd\DeleteUser;
+use Elo\Api\Cmd\GetCardHolders;
 use Elo\Api\Cmd\GetCards;
 use Elo\Api\Cmd\GetChallenge;
 use Elo\Api\Cmd\GetCPF;
@@ -494,6 +495,13 @@ class EloClient
 		$cmd->execute();
 		return $cmd->response;
 	}
+
+    public function getCardHolders()
+    {
+        $cmd = new GetCardHolders();
+        $cmd->execute();
+        return $cmd->response;
+    }
 
     /**
      * @param UserData $userData

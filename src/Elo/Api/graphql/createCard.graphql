@@ -10,7 +10,14 @@
   	{
   		card {
   			id, 
-  			sensitive
+  			sensitive,
+			last4,
+			bin{
+				number,
+				product{ name },
+				brand{ name }
+			},
+			holder { id, name, firstName, lastName }
   		}
   	}
   }",
