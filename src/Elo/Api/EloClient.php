@@ -22,6 +22,7 @@ use Elo\Api\Cmd\CreateTravelInsurance;
 use Elo\Api\Cmd\DeleteCard;
 use Elo\Api\Cmd\DeletePublicKey;
 use Elo\Api\Cmd\DeleteUser;
+use Elo\Api\Cmd\GetAllServicesByBin;
 use Elo\Api\Cmd\GetCardHolders;
 use Elo\Api\Cmd\GetCards;
 use Elo\Api\Cmd\GetChallenge;
@@ -571,6 +572,17 @@ class EloClient
     public function getTransactions($cardId, $startTimestamp, $endTimestamp, $statusTransactions)
     {
         $cmd = new GetTransactions($cardId, $startTimestamp, $endTimestamp, $statusTransactions);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param string $bin
+     * @return EloResponse
+     */
+    public function getAllServicesByBin(string $bin)
+    {
+        $cmd = new GetAllServicesByBin($bin);
         $cmd->execute();
         return $cmd->response;
     }

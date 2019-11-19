@@ -1,0 +1,12 @@
+{
+	"query":"query OneBin {
+      bin(number: \"$bin\") {
+
+        services {
+          id,
+          name
+        }
+  }
+}",
+	"variables":null
+}
