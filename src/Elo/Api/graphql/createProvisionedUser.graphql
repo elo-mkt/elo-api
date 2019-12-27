@@ -24,7 +24,6 @@
 				%ticket%
 				%event%
 				%transaction:dateTime%
-				%transaction:amount%
 			}
 		) 
 		{

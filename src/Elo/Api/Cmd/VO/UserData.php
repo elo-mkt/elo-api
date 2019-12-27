@@ -44,9 +44,9 @@ class UserData
 	public $maritalStatus;
 	public $ticket;
 	public $event;
-	public $currency;
-	public $value;
 	public $dateTime;
+    public $transactionCurrency;
+    public $transactionValue;
 
 	public function toArray()
 	{

@@ -1,4 +1,4 @@
-amount {
-    currency: \"$currency\"
-    value: \"$value\"
+amount: {
+    currency: \"$transactionCurrency\"
+    value: \"$transactionValue\"
 }

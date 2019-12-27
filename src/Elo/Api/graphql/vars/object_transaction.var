@@ -1,4 +1,7 @@
 transaction: {
 	dateTime: \"$dateTime\"
-	%amount%
+    amount: {
+        currency: \"$transactionCurrency\"
+        value: \"$transactionValue\"
+    }
 }
