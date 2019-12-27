@@ -21,6 +21,10 @@
 				%addresses:number%
 				%addresses:place%
 				%addresses:complement%
+				%ticket%
+				%event%
+				%transaction:dateTime%
+				%transaction:amount%
 			}
 		) 
 		{

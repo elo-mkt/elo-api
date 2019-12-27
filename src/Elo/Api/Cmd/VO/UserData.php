@@ -42,6 +42,11 @@ class UserData
 	public $socialAccessToken;
 	public $gender;
 	public $maritalStatus;
+	public $ticket;
+	public $event;
+	public $currency;
+	public $value;
+	public $dateTime;
 
 	public function toArray()
 	{

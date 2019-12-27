@@ -36,7 +36,12 @@ class ProvisionedUserData extends UserData
 			$userData->origin = $profileData->origin;
 			$userData->gender = $profileData->gender;
 			$userData->birthday = $profileData->birthday;
-			
+			$userData->event = $profileData->event;
+			$userData->ticket = $profileData->ticket;
+            $userData->value = $profileData->value;
+            $userData->currency = $profileData->currency;
+            $userData->dateTime = $profileData->dateTime;
+
 			self::parseContacts($userData, $profileData);
 			self::parseAddresses($userData, $profileData);
 			self::parseLegalIds($userData, $profileData);
