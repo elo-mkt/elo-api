@@ -4,7 +4,6 @@
 			input:  {  
 				clientMutationId:\"232\",
 				%userId%
-				%origin%
 				%birthday%
 				%legalIds:cpf%
 				%legalIds:rg:rgNumber%
