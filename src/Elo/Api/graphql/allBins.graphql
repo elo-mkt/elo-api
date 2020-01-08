@@ -11,11 +11,6 @@
 
       number
 
-      panSizeRange {
-        min
-        max
-      }
-
       funding
 
       isInternational
