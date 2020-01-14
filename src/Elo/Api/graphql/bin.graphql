@@ -11,6 +11,11 @@
           name
         }
 
+        brand {
+          id
+          name
+        }
+
         allowedCaptures {
           name
           code
