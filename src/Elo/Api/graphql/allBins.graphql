@@ -15,8 +15,6 @@
 
       isInternational
 
-      isCompany
-
       isToken
 
       product {
