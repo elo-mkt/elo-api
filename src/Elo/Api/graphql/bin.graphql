@@ -3,7 +3,9 @@
       bin(number: \"$bin\") {
 
         issuer {
-          name
+            id
+            name
+            legalName
         }
 
         product {

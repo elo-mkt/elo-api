@@ -36,7 +36,9 @@
       }
 
       issuer {
+        id
         name
+        legalName
       }
     }
   }
