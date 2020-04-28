@@ -2,6 +2,8 @@
 	"query":"query OneBin {
       bin(number: \"$bin\") {
 
+        isFlex
+
         issuer {
             id
             name
