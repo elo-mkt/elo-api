@@ -11,6 +11,8 @@
 
       number
 
+      isFlex
+
       funding
 
       isInternational
