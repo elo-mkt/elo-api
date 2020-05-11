@@ -33,6 +33,7 @@ use Elo\Api\Cmd\GetProfileData;
 use Elo\Api\Cmd\GetProvisionedOrigin;
 use Elo\Api\Cmd\GetProvisionedUser;
 use Elo\Api\Cmd\GetLoginSalt;
+use Elo\Api\Cmd\GetProvisionedUserByOriginAndCPF;
 use Elo\Api\Cmd\GetTransactions;
 use Elo\Api\Cmd\InsuranceProductCategory;
 use Elo\Api\Cmd\Login;
@@ -171,6 +172,18 @@ class EloClient
     public function getProvisionedOriginLeads($origin)
     {
         $cmd = new GetProvisionedOrigin($origin);
+        $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param string $usercpf
+     * @param string $origin
+     * @return EloResponse
+     */
+    public function getProvisionedUserByOriginAndCPF($usercpf, $origin)
+    {
+        $cmd = new GetProvisionedUserByOriginAndCPF($origin, $usercpf);
         $cmd->execute();
         return $cmd->response;
     }

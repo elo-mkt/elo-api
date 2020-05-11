@@ -1,0 +1,1 @@
+{ "query": "query { provisionedUsers( filter:{ legalId: { cpf:\"$cpf\"} origin: \"$origin\"}){ edges {node {id name birthday gender origin ticket event contacts { type context value } cards { id last4 bin { number } }}}}}","variables": null}
