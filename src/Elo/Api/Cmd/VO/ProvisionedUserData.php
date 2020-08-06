@@ -13,6 +13,7 @@ class ProvisionedUserData extends UserData
 {
 	public $userId;
 	public $origin;
+	public $originUrl;
 	public $gender;
 
 	public function toArray()
@@ -34,6 +35,7 @@ class ProvisionedUserData extends UserData
 			$userData->name = $profileData->name;
 			$userData->userId = $profileData->userId;
 			$userData->origin = $profileData->origin;
+			$userData->originUrl = $profileData->originUrl;
 			$userData->gender = $profileData->gender;
 			$userData->birthday = $profileData->birthday;
 			$userData->event = $profileData->event;
