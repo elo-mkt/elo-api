@@ -1,0 +1,13 @@
+{
+  "query": "mutation { 
+  	setProvisionedCommunicationChannels(
+  		input:{
+  			userId:\"$userId\",
+  			channels: [SMS]
+  		}
+  	)
+  	{
+        userId
+    }
+  }"
+}

@@ -10,6 +10,7 @@ namespace Elo\Api;
 
 use Elo\Api\Cmd\AddAgreementMailMarketingToUser;
 use Elo\Api\Cmd\AddAgreementToProvisionedUser;
+use Elo\Api\Cmd\AddGranularAgreementToProvisionedUser;
 use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
 use Elo\Api\Cmd\AllBins;
 use Elo\Api\Cmd\Bin;
@@ -597,6 +598,24 @@ class EloClient
     {
         $cmd = new GetAllServicesByBin($bin);
         $cmd->execute();
+        return $cmd->response;
+    }
+
+    /**
+     * @param string $userId
+     * @param bool $receiveEmail
+     * @param bool $receiveSms
+     * @return EloResponse
+     */
+    public function addGranularAgreementToProvisionedUser($userId, $receiveEmail = false, $receiveSms = false) {
+        if(!$receiveEmail && !$receiveSms){
+            return null;
+        }
+
+        $cmd = new AddGranularAgreementToProvisionedUser($userId, $receiveEmail, $receiveSms);
+
+        $cmd->execute();
+
         return $cmd->response;
     }
 }
