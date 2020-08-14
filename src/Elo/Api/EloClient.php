@@ -9,6 +9,7 @@
 namespace Elo\Api;
 
 use Elo\Api\Cmd\AddAgreementMailMarketingToUser;
+use Elo\Api\Cmd\AddAgreementTermsToProvisionedUser;
 use Elo\Api\Cmd\AddAgreementToProvisionedUser;
 use Elo\Api\Cmd\AddGranularAgreementToProvisionedUser;
 use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
@@ -618,4 +619,13 @@ class EloClient
 
         return $cmd->response;
     }
+
+    public function addAgreementTermsToProvisonedUser($userId, $term) {
+        $cmd = new AddAgreementTermsToProvisionedUser($userId, $term);
+
+        $cmd->execute();
+
+        return $cmd->response;
+    }
+
 }

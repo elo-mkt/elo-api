@@ -1,0 +1,26 @@
+{
+  "query": "mutation { 
+  	addAgreementToProvisionedUser(
+  		input:{
+  			clientMutationId:\"123\",
+  			userId:\"$userId\",
+  			agreementTermId:\"$termId\",
+  		}
+  	)
+  	{
+        clientMutationId,
+        user{
+            id,
+            username
+        },
+        agreement{
+            agreementTerm{
+                id,
+                title,
+                description,
+                url
+            }
+        }
+    }
+  }"
+}
