@@ -15,6 +15,7 @@ use Elo\Api\Cmd\AddGranularAgreementToProvisionedUser;
 use Elo\Api\Cmd\AddPublicKeyToProvisionedUser;
 use Elo\Api\Cmd\AllBins;
 use Elo\Api\Cmd\Bin;
+use Elo\Api\Cmd\BinNotServices;
 use Elo\Api\Cmd\CreateCard;
 use Elo\Api\Cmd\CreateExtendedWarrantyInsurance;
 use Elo\Api\Cmd\CreateProvisionedCard;
@@ -625,6 +626,12 @@ class EloClient
 
         $cmd->execute();
 
+        return $cmd->response;
+    }
+
+    public function binNotServices($bin) {
+        $cmd = new BinNotServices($bin);
+        $cmd->execute();
         return $cmd->response;
     }
 

@@ -1,0 +1,35 @@
+{
+	"query":"query OneBin {
+      bin(number: \"$bin\") {
+
+        isFlex
+
+        issuer {
+            id
+            name
+            legalName
+        }
+
+        product {
+          id
+          name
+        }
+
+        brand {
+          id
+          name
+        }
+
+        allowedCaptures {
+          name
+          code
+        }
+
+        usages {
+          name
+          code
+        }
+  }
+}",
+	"variables":null
+}
